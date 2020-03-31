@@ -68,6 +68,10 @@ def add_review(request, country_name_slug, city_name_slug):
     return render(request, '', context)
 
 
-#def showUserProfile(request):
+def showUserProfile(request, username):
+    user = UserProfile.objects.get(username=username)
+    return render(request, '', {"user":user})
+
+    #The blank '' will eventually be GlobetrottersGuide/user_profile.html when the template is finished
 #def showLikes(request):
 #def showreview(requset):
