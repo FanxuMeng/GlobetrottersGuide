@@ -14,6 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from django.urls import include
 from GlobetrottersGuide import views
@@ -29,14 +31,15 @@ urlpatterns = [
     path('user/<username>/likes/',
         views.showLikes, name='UserLiked'),
 
+
     path('<slug:continent_name_slug>/',
-        views.home, name='show_continent'),
+        views.home_continent(), name='Home'),
     path('<slug:continent_name_slug>/<slug:country_name_slug>/',
-        views.home,name='Country'),
+        views.home_country,name='Country'),
     path('<slug:continent_name_slug>/<slug:country_name_slug>/writereview/',
         views.writereview,name='write_review'),
     path('<slug:continent_name_slug>/<slug:country_name_slug>/<slug:city_name_slug>/',
         views.showreview,name='City'),
     path('<slug:continent_name_slug>/<slug:country_name_slug>/<slug:city_name_slug>/writereview/',
         views.writereview,name='City'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

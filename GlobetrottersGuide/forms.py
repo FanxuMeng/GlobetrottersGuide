@@ -17,7 +17,9 @@ class UserProfileForm(forms.ModelForm):
         fields = ('picture', 'nationality')
 
 class ReviewForm(forms.ModelForm):
-    text = forms.CharField(widget=forms.Textarea(attrs={'rows':40,'cols':20}), max_length=Review.TEXT_MAX_LENGTH)
+    text = forms.CharField(widget=forms.Textarea(attrs={'rows':40,'cols':20}),
+                           max_length=Review.TEXT_MAX_LENGTH,
+                           help_text='Share your experience.')
 
     class Mate:
         model = Review

@@ -64,13 +64,23 @@ class City(models.Model):
 class Review(models.Model):
     TEXT_MAX_LENGTH = 2000
 
+    RATING_CHOICES = (
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+    )
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    publish_date = models.DateTimeField('date published')
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
 
     timeSpent = models.DurationField(blank=False)
     image = models.ImageField(upload_to='review_images', blank=True)
     text = models.TextField(max_length=2000, blank=False)
+    rating = models.IntegerField(choices=RATING_CHOICES)
 
     belong_country = models.OneToOneField(Country, on_delete=models.CASCADE, blank=True)
     belong_city = models.OneToOneField(City, on_delete=models.CASCADE, blank=True)
@@ -85,9 +95,9 @@ class UserProfile(models.Model):
     nationality = models.ForeignKey(Country, on_delete=models.CASCADE)
     review_count = models.IntegerField(default=0)
 
-    liked_review = models.ManyToManyField(Review,on_delete=models.CASCADE)
-    liked_country = models.ManyToManyField(Country,on_delete=models.CASCADE)
-    liked_city = models.ManyToManyField(City,on_delete=models.CASCADE)
+    liked_review = models.ManyToManyField(Review)
+    liked_country = models.ManyToManyField(Country)
+    liked_city = models.ManyToManyField(City)
 
     def __str__(self):
         return self.user
