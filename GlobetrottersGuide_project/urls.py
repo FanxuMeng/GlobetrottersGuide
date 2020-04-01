@@ -24,22 +24,23 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', include('GlobetrottersGuide.urls')),
 
-    path('myprofile/',views.showUserProfile, name='MyProfile'),
-    path('myprofile/likes/',views.showLikes, name='MeLiked'),
-    path('user/<username>/',
+    path('user/<int:user_id>/',
         views.showUserProfile, name='UserProfile'),
-    path('user/<username>/likes/',
+    path('user/<int:user_id>/likes/',
         views.showLikes, name='UserLiked'),
 
 
     path('<slug:continent_name_slug>/',
-        views.home_continent(), name='Home'),
+        views.home_continent, name='Home'),
     path('<slug:continent_name_slug>/<slug:country_name_slug>/',
         views.home_country,name='Country'),
-    path('<slug:continent_name_slug>/<slug:country_name_slug>/writereview/',
-        views.writereview,name='write_review'),
     path('<slug:continent_name_slug>/<slug:country_name_slug>/<slug:city_name_slug>/',
-        views.showreview,name='City'),
-    path('<slug:continent_name_slug>/<slug:country_name_slug>/<slug:city_name_slug>/writereview/',
-        views.writereview,name='City'),
+        views.home_city,name='City'),
+    path('writereview/',
+        views.add_review,name='Reviewing'),
+    path('<slug:continent_name_slug>/<slug:country_name_slug>/<int:review_id>/',
+         views.review_detail, name='review'),
+    path('<slug:continent_name_slug>/<int:review_id>/',
+         views.review_detail, name='review'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

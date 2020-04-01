@@ -96,8 +96,6 @@ class UserProfile(models.Model):
     review_count = models.IntegerField(default=0)
 
     liked_review = models.ManyToManyField(Review)
-    liked_country = models.ManyToManyField(Country)
-    liked_city = models.ManyToManyField(City)
 
     def __str__(self):
         return self.user
