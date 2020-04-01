@@ -36,11 +36,13 @@ urlpatterns = [
         views.home_country,name='Country'),
     path('<slug:continent_name_slug>/<slug:country_name_slug>/<slug:city_name_slug>/',
         views.home_city,name='City'),
-    path('writereview/',
-        views.add_review,name='Reviewing'),
-    path('<slug:continent_name_slug>/<slug:country_name_slug>/<int:review_id>/',
+    path('writeCountryReview/',
+        views.add_countryReview,name='Reviewing'),
+    path('writeCityReview/',
+        views.add_cityReview,name='Reviewing'),
+    path('<slug:continent_name_slug>/<slug:country_name_slug>/<int:cityReview_id>/',
          views.review_detail, name='review'),
-    path('<slug:continent_name_slug>/<int:review_id>/',
+    path('<slug:continent_name_slug>/<int:countryReview_id>/',
          views.review_detail, name='review'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

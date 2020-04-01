@@ -3,7 +3,7 @@
 
 from django import forms
 from GlobetrottersGuide.models import UserProfile
-from GlobetrottersGuide.models import Review
+from GlobetrottersGuide.models import countryReview, cityReview
 from django.contrib.auth.models import User
 
 
@@ -19,11 +19,21 @@ class UserProfileForm(forms.ModelForm):
         fields = ('picture', 'nationality')
 
 
-class ReviewForm(forms.ModelForm):
+class countryReviewForm(forms.ModelForm):
     text = forms.CharField(widget=forms.Textarea(attrs={'rows':40,'cols':20}),
-                           max_length=Review.TEXT_MAX_LENGTH,
+                           max_length=countryReview.TEXT_MAX_LENGTH,
                            help_text='Share your experience.')
 
     class Mate:
-        model = Review
-        fields = ('timeSpent', 'image', 'text', 'belong_country', 'belong_city')
+        model = countryReview
+        fields = ('timeSpent', 'image', 'text', 'belong_country')
+
+
+class cityReviewForm(forms.ModelForm):
+    text = forms.CharField(widget=forms.Textarea(attrs={'rows':40,'cols':20}),
+                           max_length=cityReview.TEXT_MAX_LENGTH,
+                           help_text='Share your experience.')
+
+    class Mate:
+        model = cityReview
+        fields = ('timeSpent', 'image', 'text', 'belong_city')

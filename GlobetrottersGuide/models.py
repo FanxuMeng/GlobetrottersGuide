@@ -61,7 +61,7 @@ class City(models.Model):
         return self.name
 
 
-class Review(models.Model):
+class countryReview(models.Model):
     TEXT_MAX_LENGTH = 2000
 
     RATING_CHOICES = (
@@ -73,6 +73,8 @@ class Review(models.Model):
     )
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    belong_country = models.ForeignKey(Country, on_delete=models.CASCADE)
+
     publish_date = models.DateTimeField('date published')
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
@@ -82,11 +84,29 @@ class Review(models.Model):
     text = models.TextField(max_length=2000, blank=False)
     rating = models.IntegerField(choices=RATING_CHOICES)
 
-    belong_country = models.OneToOneField(Country, on_delete=models.CASCADE, blank=True)
-    belong_city = models.OneToOneField(City, on_delete=models.CASCADE, blank=True)
 
-    def __str__(self):
-        return self.user
+class cityReview(models.Model):
+    TEXT_MAX_LENGTH = 2000
+
+    RATING_CHOICES = (
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+    )
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    belong_city = models.ForeignKey(City, on_delete=models.CASCADE)
+
+    publish_date = models.DateTimeField('date published')
+    views = models.IntegerField(default=0)
+    likes = models.IntegerField(default=0)
+
+    timeSpent = models.DurationField(blank=False)
+    image = models.ImageField(upload_to='review_images', blank=True)
+    text = models.TextField(max_length=2000, blank=False)
+    rating = models.IntegerField(choices=RATING_CHOICES)
 
 
 class UserProfile(models.Model):
@@ -95,7 +115,8 @@ class UserProfile(models.Model):
     nationality = models.ForeignKey(Country, on_delete=models.CASCADE)
     review_count = models.IntegerField(default=0)
 
-    liked_review = models.ManyToManyField(Review)
+    liked_review_country = models.ManyToManyField(countryReview)
+    liked_review_city = models.ManyToManyField(cityReview)
 
     def __str__(self):
-        return self.user
+        return self.user.username
