@@ -81,6 +81,7 @@ class countryReview(models.Model):
 
     timeSpent = models.DurationField(blank=False)
     image = models.ImageField(upload_to='review_images', blank=True)
+    title = models.CharField(max_length=128, default='Title')
     text = models.TextField(max_length=2000, blank=False)
     rating = models.IntegerField(choices=RATING_CHOICES)
 
@@ -105,6 +106,7 @@ class cityReview(models.Model):
 
     timeSpent = models.DurationField(blank=False)
     image = models.ImageField(upload_to='review_images', blank=True)
+    title = models.CharField(max_length=128, default='Title')
     text = models.TextField(max_length=2000, blank=False)
     rating = models.IntegerField(choices=RATING_CHOICES)
 

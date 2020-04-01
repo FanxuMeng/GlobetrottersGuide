@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c38e4df1-fd9a-4cb6-843a-1e6e73f73f83" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/GlobetrottersGuide_project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GlobetrottersGuide_project.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/flags/canada.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/flags/china.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/flags/japan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/flags/usa.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlobetrottersGuide/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlobetrottersGuide/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GlobetrottersGuide/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlobetrottersGuide/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlobetrottersGuide_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide_project/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/GlobetrottersGuide/add_review.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/add_review.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +36,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/flags" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -52,6 +49,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\rangoWorkspace\GlobetrottersGuide_project\static\flags" />
       <recent name="D:\rangoWorkspace\GlobetrottersGuide_project\static\images" />
     </key>
   </component>
@@ -72,7 +70,7 @@
       <workItem from="1585523768203" duration="38948000" />
       <workItem from="1585771902568" duration="293000" />
       <workItem from="1585772214289" duration="120000" />
-      <workItem from="1585772346530" duration="6269000" />
+      <workItem from="1585772346530" duration="8823000" />
     </task>
     <servers />
   </component>
