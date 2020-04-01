@@ -64,7 +64,7 @@ def add_review(request, country_name_slug, city_name_slug):
             rating = form.cleaned_data['rating']
 
 
-
+    context = {}
     return render(request, '', context)
 
 
@@ -73,5 +73,27 @@ def showUserProfile(request, username):
     return render(request, '', {"user":user})
 
     #The blank '' will eventually be GlobetrottersGuide/user_profile.html when the template is finished
+def showLikes(request,likes):
+
+    like = Review.objects.get(likes)
+
+    template = '' ### <- change this, probably also attached to the user_profile.html template
+
+    ctxDct = {'likes':like} ###method specifc context dictionary
+
+    return render(request,template,ctxDct)
+    
+
+def showReview(request,text,image,rating):
+
+    showText = Review.objects.get(text)
+    showImage = Review.objects.get(image)
+    showRating = Review.objects.get(rating)
+
+    template = "" ### <- change this, probably attached to city.html template when it gets created
+
+    ctxDct = {'rating':showRating,'text':showText,'image':showImage} ###method specifc context dictionary
+
+    return render(request,template, ctxDct)
 #def showLikes(request):
 #def showreview(requset):
