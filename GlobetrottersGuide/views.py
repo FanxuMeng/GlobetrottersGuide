@@ -7,8 +7,6 @@ from datetime import datetime
 
 from GlobetrottersGuide.forms import countryReviewForm
 from GlobetrottersGuide.forms import cityReviewForm
-from GlobetrottersGuide.forms import UserForm
-from GlobetrottersGuide.forms import UserProfileForm
 
 from GlobetrottersGuide.models import UserProfile
 from GlobetrottersGuide.models import countryReview,cityReview
@@ -128,8 +126,13 @@ def showUserProfile(request):
     username = request.user.username
     user = UserProfile.objects.get(username=username)
     return render(request, 'GlobetrottersGuide/UserProfile.html', {"user": user})
+<<<<<<< HEAD
     
 ### restructured showLikes and home_city to handle empty gets
+=======
+
+
+>>>>>>> v4
 def showLikes(request):
 
     template = 'GlobetrottersGuide/UserLiked.html' ### template
@@ -150,56 +153,22 @@ def showLikes(request):
 
 
 def home_city(request, city_name_slug):
+<<<<<<< HEAD
 
     template = 'GlobetrottersGuide/home_city.html' ### template
     ctxDct = {}
 
     try:
-        review_list = cityReview.objects.filter(belong_city=city_name_slug)
+        review_list = Review.objects.filter(belong_city=city_name_slug)
         ctxDct['Reviews'] = review_list
         
     except review_list.DoesNotExist:
         ctxDct['Reviews'] = None
     
+=======
+    review_list = cityReview.objects.filter(belong_city=city_name_slug)
+    ctxDct = {'review_list': review_list}
+    template = 'GlobetrottersGuide/home_city.html'
+>>>>>>> v4
     return render(request,template, ctxDct)
-### user register, check if it works
-### feel free to add to it if we need more elements 
-### register doesn't take in an email address, don't know if were meant to but im just going off of the forms.py file
-
-def register(request):
-    template = "" ### <------- change this probably to "register.html"
-    
-    isUser = False
-
-    if request.method == 'POST':
-        userForm = UserForm(request.POST)
-        userProfileForm = UserProfileForm(request.POST)
-
-        if userForm.is_valid() and userProfileForm.is_valid():
-            user = UserForm.save()
-            user.set_password(user.password)
-            user.save()
-
-            profile = userProfileForm.save(commit=False)
-            profile.user = user
-
-            if 'picture' in request.FILES: #if the user gives a profile picture
-                profile.picture = request.FILES['picture']
-            profile.save()
-
-            if 'nationality' in request.FILES: # if the user provides their nationality
-                profile.nationality = request.FILES['nationality']
-            profile.save()
-
-            isUser = True
-        else:
-            print(userForm.errors,UserProfileForm.errors)
-    else:
-        ## blank forms 
-        userForm = UserForm()
-        userProfileForm = UserProfileForm()
-
-    ctxDct = {'userForm':userForm,'userProfileForm':userProfileForm,'isUser':isUser}
-
-    return render(request,template,ctxDct)
 
