@@ -2,22 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c38e4df1-fd9a-4cb6-843a-1e6e73f73f83" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/populate_gtg.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/gtg_logo.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/UserLiked.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/UserProfile.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/add_review.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/home_city.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/home_continet.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/home_country.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/review_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/continent/Africa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/continent/Europe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/continent/NA.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/continent/Oceania.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/continent/SA.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/continent/asia.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/continent/worldmap.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlobetrottersGuide/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlobetrottersGuide/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlobetrottersGuide/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlobetrottersGuide_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide_project/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +38,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/continent" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -59,6 +51,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\rangoWorkspace\GlobetrottersGuide_project\static\continent" />
+      <recent name="D:\rangoWorkspace\GlobetrottersGuide_project\static\flags" />
       <recent name="D:\rangoWorkspace\GlobetrottersGuide_project\static\images" />
     </key>
   </component>
@@ -77,6 +71,9 @@
       <workItem from="1583936620646" duration="7515000" />
       <workItem from="1584055956560" duration="1029000" />
       <workItem from="1585523768203" duration="38948000" />
+      <workItem from="1585771902568" duration="293000" />
+      <workItem from="1585772214289" duration="120000" />
+      <workItem from="1585772346530" duration="10792000" />
     </task>
     <servers />
   </component>
@@ -93,10 +90,10 @@
     </state>
     <state x="747" y="240" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1584117180893" />
     <state x="934" y="302" key="FileChooserDialogImpl/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1583789110199" />
-    <state x="158" y="161" key="SettingsEditor" timestamp="1584055900433">
+    <state x="508" y="246" key="SettingsEditor" timestamp="1585772332355">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="158" y="161" key="SettingsEditor/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1584055900433" />
+    <state x="508" y="246" key="SettingsEditor/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1585772332355" />
     <state x="762" y="0" width="781" height="840" key="dock-window-1" timestamp="1583936648251">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -105,10 +102,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="367" y="67" width="1038" height="785" key="dock-window-2/0.0.1536.834@0.0.1536.834" timestamp="1583938650814" />
-    <state x="1089" y="65" width="778" height="880" key="dock-window-3" timestamp="1585756513181">
+    <state x="1047" y="100" width="858" height="880" key="dock-window-3" timestamp="1585782374911">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="786" y="0" width="756" height="840" key="dock-window-3/0.0.1536.834@0.0.1536.834" timestamp="1584117359168" />
-    <state x="1089" y="65" width="778" height="880" key="dock-window-3/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1585756513181" />
+    <state x="1047" y="100" width="858" height="880" key="dock-window-3/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1585782374911" />
   </component>
 </project>
