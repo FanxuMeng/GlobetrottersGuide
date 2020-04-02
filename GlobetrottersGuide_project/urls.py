@@ -23,6 +23,7 @@ from GlobetrottersGuide import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', include('GlobetrottersGuide.urls')),
+    path('accounts/',include('registration.backends.simple.urls')),
 
     path('user/<int:user_id>/',
         views.showUserProfile, name='UserProfile'),

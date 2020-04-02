@@ -126,13 +126,8 @@ def showUserProfile(request):
     username = request.user.username
     user = UserProfile.objects.get(username=username)
     return render(request, 'GlobetrottersGuide/UserProfile.html', {"user": user})
-<<<<<<< HEAD
     
 ### restructured showLikes and home_city to handle empty gets
-=======
-
-
->>>>>>> v4
 def showLikes(request):
 
     template = 'GlobetrottersGuide/UserLiked.html' ### template
@@ -153,22 +148,16 @@ def showLikes(request):
 
 
 def home_city(request, city_name_slug):
-<<<<<<< HEAD
 
     template = 'GlobetrottersGuide/home_city.html' ### template
     ctxDct = {}
 
     try:
-        review_list = Review.objects.filter(belong_city=city_name_slug)
-        ctxDct['Reviews'] = review_list
+        review_list = cityReview.objects.filter(belong_city=city_name_slug)
+        ctxDct['review_list'] = review_list
         
     except review_list.DoesNotExist:
-        ctxDct['Reviews'] = None
+        ctxDct['review_list'] = None
     
-=======
-    review_list = cityReview.objects.filter(belong_city=city_name_slug)
-    ctxDct = {'review_list': review_list}
-    template = 'GlobetrottersGuide/home_city.html'
->>>>>>> v4
     return render(request,template, ctxDct)
 
