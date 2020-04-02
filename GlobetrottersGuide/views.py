@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 from datetime import datetime
 
 from GlobetrottersGuide.forms import ReviewForm
+from GlobetrottersGuide.forms import UserForm
+from GlobetrottersGuide.forms import UserProfileForm
 
 from GlobetrottersGuide.models import UserProfile
 from GlobetrottersGuide.models import Review
@@ -96,7 +98,7 @@ def showUserProfile(request):
     username = request.user.username
     user = UserProfile.objects.get(username=username)
     return render(request, 'GlobetrottersGuide/UserProfile.html', {"user": user})
-    
+
 ### restructured showLikes and home_city to handle empty gets
 def showLikes(request):
 
@@ -123,10 +125,46 @@ def home_city(request, city_name_slug):
 
     try:
         review_list = Review.objects.filter(belong_city=city_name_slug)
-        ctxDct['Reviews'] = review_list
+        ctxDct['review_list'] = review_list
         
     except review_list.DoesNotExist:
-        ctxDct['Reviews'] = None
+        ctxDct['review_list'] = None
     
     return render(request,template, ctxDct)
 
+###user register
+def register(request):
+    template = "" ### <------- change this
+    
+    isUser = False
+
+    if request.method == 'POST':
+        userForm = UserForm(request.POST)
+        userProfileForm = UserProfileForm(request.POST)
+
+        if userForm.is_valid() and userProfileForm.is_valid():
+            user = UserForm.save()
+            user.set_password(user.password)
+            user.save()
+
+            profile = userProfileForm.save(commit=False)
+            profile.user = user
+
+            if 'picture' in request.FILES:
+                profile.picture = request.FILES['picture']
+            profile.save()
+
+            if 'nationality' in request.FILES:
+                profile.nationality = request.FILES['nationality']
+            profile.save()
+
+            isUser = True
+        else:
+            print(userForm.errors,UserProfileForm.errors)
+    else:
+        userForm = UserForm()
+        userProfileForm = UserProfileForm()
+
+    ctxDct = {'userForm':userForm,'userProfileForm':userProfileForm,'isUser':isUser}
+
+    return render(request,template,ctxDct)
