@@ -125,7 +125,22 @@ def about(request):
 def showUserProfile(request):
     username = request.user.username
     user = UserProfile.objects.get(username=username)
-    return render(request, 'GlobetrottersGuide/UserProfile.html', {"user": user})
+
+    context_dict = {}
+    context_dict['userProfile'] = user
+    try:
+        countryReview_list = countryReview.objects.get(username=username)
+        context_dict['countryReview'] = countryReview_list
+    except countryReview.DoesNotExist:
+        context_dict['countryReview'] = None
+
+    try:
+        cityReview_list = cityReview.objects.get(username=username)
+        context_dict['cityReview'] = cityReview_list
+    except cityReview.DoesNotExist:
+        context_dict['cityReview'] = None
+
+    return render(request, 'GlobetrottersGuide/UserProfile.html', context=context_dict)
     
 ### restructured showLikes and home_city to handle empty gets
 def showLikes(request):
