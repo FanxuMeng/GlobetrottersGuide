@@ -2,14 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c38e4df1-fd9a-4cb6-843a-1e6e73f73f83" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/continent/Africa.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/continent/Europe.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/continent/NA.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/continent/Oceania.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/continent/SA.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/continent/asia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/continent/worldmap.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/dashboard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/gtg_logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/add_cityReview.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GlobetrottersGuide/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GlobetrottersGuide/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GlobetrottersGuide_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide_project/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GlobetrottersGuide_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide_project/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/GlobetrottersGuide/add_review.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/add_countryReview.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/GlobetrottersGuide/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +23,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="CSS File" />
         <option value="HTML File" />
       </list>
     </option>
@@ -38,7 +42,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/continent" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tango_with_django_project" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -47,13 +52,14 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\rangoWorkspace\GlobetrottersGuide_project\static\images" />
+      <recent name="D:\rangoWorkspace\GlobetrottersGuide_project\static\css" />
       <recent name="D:\rangoWorkspace\GlobetrottersGuide_project\static\continent" />
       <recent name="D:\rangoWorkspace\GlobetrottersGuide_project\static\flags" />
-      <recent name="D:\rangoWorkspace\GlobetrottersGuide_project\static\images" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -73,7 +79,9 @@
       <workItem from="1585523768203" duration="38948000" />
       <workItem from="1585771902568" duration="293000" />
       <workItem from="1585772214289" duration="120000" />
-      <workItem from="1585772346530" duration="10792000" />
+      <workItem from="1585772346530" duration="24424000" />
+      <workItem from="1585841638459" duration="31000" />
+      <workItem from="1585841680036" duration="4559000" />
     </task>
     <servers />
   </component>
@@ -85,23 +93,29 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="255" y="331" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1583790299537" />
-    <state x="747" y="240" key="FileChooserDialogImpl" timestamp="1584117180893">
-      <screen x="0" y="0" width="1536" height="834" />
-    </state>
-    <state x="747" y="240" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1584117180893" />
-    <state x="934" y="302" key="FileChooserDialogImpl/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1583789110199" />
-    <state x="508" y="246" key="SettingsEditor" timestamp="1585772332355">
+    <state x="561" y="339" key="FileChooserDialogImpl" timestamp="1585841853243">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="508" y="246" key="SettingsEditor/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1585772332355" />
-    <state x="762" y="0" width="781" height="840" key="dock-window-1" timestamp="1583936648251">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state x="747" y="240" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1584117180893" />
+    <state x="561" y="339" key="FileChooserDialogImpl/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1585841853243" />
+    <state x="508" y="246" key="SettingsEditor" timestamp="1585842061420">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="508" y="246" key="SettingsEditor/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1585842061420" />
+    <state x="661" y="348" key="com.intellij.ide.util.TipDialog" timestamp="1585841688714">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="661" y="348" key="com.intellij.ide.util.TipDialog/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1585841688714" />
+    <state x="1055" y="0" width="872" height="1057" key="dock-window-1" timestamp="1585823790610">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="762" y="0" width="781" height="840" key="dock-window-1/0.0.1536.834@0.0.1536.834" timestamp="1583936648251" />
-    <state x="367" y="67" width="1038" height="785" key="dock-window-2" timestamp="1583938650814">
-      <screen x="0" y="0" width="1536" height="834" />
+    <state x="1055" y="0" width="872" height="1057" key="dock-window-1/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1585823790610" />
+    <state x="1083" y="0" width="844" height="1057" key="dock-window-2" timestamp="1585835399625">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="367" y="67" width="1038" height="785" key="dock-window-2/0.0.1536.834@0.0.1536.834" timestamp="1583938650814" />
+    <state x="1083" y="0" width="844" height="1057" key="dock-window-2/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1585835399625" />
     <state x="1047" y="100" width="858" height="880" key="dock-window-3" timestamp="1585782374911">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

@@ -23,26 +23,7 @@ from GlobetrottersGuide import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', include('GlobetrottersGuide.urls')),
-
-    path('user/<int:user_id>/',
-        views.showUserProfile, name='UserProfile'),
-    path('user/<int:user_id>/likes/',
-        views.showLikes, name='UserLiked'),
-
-
-    path('<slug:continent_name_slug>/',
-        views.home_continent, name='Home'),
-    path('<slug:continent_name_slug>/<slug:country_name_slug>/',
-        views.home_country,name='Country'),
-    path('<slug:continent_name_slug>/<slug:country_name_slug>/<slug:city_name_slug>/',
-        views.home_city,name='City'),
-    path('writeCountryReview/',
-        views.add_countryReview,name='Reviewing'),
-    path('writeCityReview/',
-        views.add_cityReview,name='Reviewing'),
-    path('<slug:continent_name_slug>/<slug:country_name_slug>/<int:cityReview_id>/',
-         views.review_detail, name='review'),
-    path('<slug:continent_name_slug>/<int:countryReview_id>/',
-         views.review_detail, name='review'),
+    path('', views.home, name='home'),
+    path('accounts/', include('registration.backends.simple.urls'))
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

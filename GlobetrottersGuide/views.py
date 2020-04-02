@@ -77,7 +77,7 @@ def add_countryReview(request, country_name_slug):
         else:
             print(form.errors)
 
-    return render(request,'GlobetrottersGuide/add_review.html')
+    return render(request,'GlobetrottersGuide/add_countryReview.html')
 
 
 @login_required
@@ -106,7 +106,7 @@ def add_cityReview(request, city_name_slug):
         else:
             print(form.errors)
 
-    return render(request,'GlobetrottersGuide/add_review.html')
+    return render(request,'GlobetrottersGuide/add_cityReview.html')
 
 
 def review_detail(request, countryReview_id):
