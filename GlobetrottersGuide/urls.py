@@ -8,5 +8,5 @@ app_name = 'GlobetrottersGuide'
 urlpatterns = [
     path('',views.home, name='HomePage'),
     path('about/',views.about, name='about'),
-    ###path('register/',views.register,name='register') ###commented out until register gets finished
+
 ]

@@ -8,14 +8,13 @@ from django.contrib.auth.models import User
 
 
 class UserForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput(),max_length=36,help_text='Enter your desired password')
-    class Meta:
+    class Mate:
         model = User
         fields = ('username', 'password')
 
 
 class UserProfileForm(forms.ModelForm):
-    class Meta:
+    class Mata:
         model = UserProfile
         fields = ('picture', 'nationality')
 
@@ -25,6 +24,6 @@ class ReviewForm(forms.ModelForm):
                            max_length=Review.TEXT_MAX_LENGTH,
                            help_text='Share your experience.')
 
-    class Meta:
+    class Mate:
         model = Review
         fields = ('timeSpent', 'image', 'text', 'belong_country', 'belong_city')
