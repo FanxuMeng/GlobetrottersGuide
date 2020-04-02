@@ -92,58 +92,41 @@ def about(request):
     response = render(request, 'GlobetrottersGuide/about.html', context=context_dict)
     return response
 
-<<<<<<< HEAD
-    context = {}
-    return render(request, '', context)
-=======
 def showUserProfile(request):
     username = request.user.username
     user = UserProfile.objects.get(username=username)
     return render(request, 'GlobetrottersGuide/UserProfile.html', {"user": user})
-
+    
+### restructured showLikes and home_city to handle empty gets
 def showLikes(request):
-    username = request.user.username
-    like = UserProfile.objects.get(username=username)
-    template = 'GlobetrottersGuide/UserLiked.html'
-    ctxDct = {'likes':like}
+
+    template = 'GlobetrottersGuide/UserLiked.html' ### template
+    ctxDct = {}
+
+    try:
+        username = request.user.username
+        like = UserProfile.objects.get(username=username) ### still needs to be changed to appropriate object
+
+        ctxDct['username'] = username
+        ctxDct['likes'] = like
+
+    except like.DoesNotExist: ### user can still exist, but not have anything liked
+        ctxDct['username'] = username
+        ctxDct['likes'] = None
+
     return render(request,template,ctxDct)
->>>>>>> another
 
 def home_city(request, city_name_slug):
-    review_list = Review.objects.filter(belong_city=city_name_slug)
-    ctxDct = {'review_list': review_list}
-    template = 'GlobetrottersGuide/home_city.html'
-    return render(request,template, ctxDct)
 
-<<<<<<< HEAD
-def showUserProfile(request, username):
-    user = UserProfile.objects.get(username=username)
-    return render(request, '', {"user":user})
+    template = 'GlobetrottersGuide/home_city.html' ### template
+    ctxDct = {}
 
-    #The blank '' will eventually be GlobetrottersGuide/user_profile.html when the template is finished
-def showLikes(request,likes):
-
-    like = Review.objects.get(likes)
-
-    template = '' ### <- change this, probably also attached to the user_profile.html template
-
-    ctxDct = {'likes':like} ###method specifc context dictionary
-
-    return render(request,template,ctxDct)
+    try:
+        review_list = Review.objects.filter(belong_city=city_name_slug)
+        ctxDct['Reviews'] = review_list
+        
+    except review_list.DoesNotExist:
+        ctxDct['Reviews'] = None
     
-
-def showReview(request,text,image,rating):
-
-    showText = Review.objects.get(text)
-    showImage = Review.objects.get(image)
-    showRating = Review.objects.get(rating)
-
-    template = "" ### <- change this, probably attached to city.html template when it gets created
-
-    ctxDct = {'rating':showRating,'text':showText,'image':showImage} ###method specifc context dictionary
-
     return render(request,template, ctxDct)
-#def showLikes(request):
-#def showreview(requset):
-=======
->>>>>>> another
+
