@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'GlobetrottersGuide/base.html' %}
+{% load staticfiles %}
 
-</body>
-</html>
+{%block title_block %}
+<h1 id="pagetitle">Home</h1>
+{% endblock %}
+
+{% block list_block %}
+    {% if continents %}
+    <ul id="leftlist">
+        {% for continent in continents %}
+        <li id="leftitem">
+            <a href="/{{ continent.slug }}/">{{ continent.name }}</a>
+        </li>
+        {% endfor %}
+
+        {% for continent in continents %}
+        <li id="leftitem">{{ continent.likes }} likes</li>
+        {% endfor %}
+    </ul>   
+    {% else %}
+    <strong>There are no continents in the list.</strong>
+    {% endif %}
+{% endblock %}
+
+{% block img_block %}
+       <img id="geomap" src="{% static 'continent/worldmap.png' %}" />
+{% endblock %}

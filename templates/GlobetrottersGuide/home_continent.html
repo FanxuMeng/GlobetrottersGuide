@@ -3,20 +3,20 @@
 {% load staticfiles %}
 
 {%block title_block %}
-    <h1 id="pagetitle">{{ country_name }}</h1>
+    <h1 id="pagetitle">{{ continent_name }}</h1>
 {% endblock %}
 
 {% block list_block %}
-    {% if cities %}
+    {% if countries %}
     <ul id="leftlist">
-        {% for city in cities %}
+        {% for country in countries %}
         <li id="leftitem">
-            <a href="/{{ continent_slug }}/{{ country_slug }}/{{ city.slug }}/">{{ city.name }}</a>
+            <a href="/{{ continent_slug }}/{{ country.slug }}/">{{ country.name }}</a>
         </li>
         {% endfor %}
 
-        {% for city in cities %}
-        <li id="leftitem">{{ city.review_count }} reviews</li>
+        {% for country in countries %}
+        <li id="leftitem">{{ country.review_count }} reviews</li>
         {% endfor %}
     </ul>   
     {% else %}
@@ -25,8 +25,8 @@
 {% endblock %}
 
 {% block img_block %}
-    {% with 'flags/'|add:country_slug|add:'.png' as img %}
-       <img id="flagimg" src="{% static img %}" />
+    {% with 'continent/'|add:continent_slug|add:'.png' as img %}
+       <img id="geomap" src="{% static img %}" />
     {% endwith %}
 {% endblock %}
 

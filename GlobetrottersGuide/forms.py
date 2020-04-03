@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from django import forms
-from GlobetrottersGuide.models import UserProfile, editProfile
+from GlobetrottersGuide.models import UserProfile#, editProfile
 from GlobetrottersGuide.models import countryReview, cityReview
 from django.contrib.auth.models import User
 

@@ -32,7 +32,7 @@ urlpatterns = [
 
 
     path('<slug:continent_name_slug>/',
-        views.home_continent, name='Home'),
+        views.home_continent, name='Continent'),
     path('<slug:continent_name_slug>/<slug:country_name_slug>/',
         views.home_country,name='Country'),
     path('<slug:continent_name_slug>/<slug:country_name_slug>/<slug:city_name_slug>/',

@@ -21,7 +21,7 @@ class Continent(models.Model):
 class Country(models.Model):
     NAME_MAX_LENGTH = 128
 
-    Continent = models.ForeignKey(Continent, on_delete=models.CASCADE)
+    continent = models.ForeignKey(Continent, on_delete=models.CASCADE)
     name = models.CharField(max_length=128, unique=True)
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
@@ -32,6 +32,9 @@ class Country(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Country, self).save(*args, **kwargs)
+
+    def getContinentSlug(self):
+        return self.continent.slug
 
     class Meta:
         verbose_name_plural = 'Countries'
@@ -53,6 +56,9 @@ class City(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(City, self).save(*args, **kwargs)
+
+    def getCountrySlug(self):
+        return self.country.slug
 
     class Meta:
         verbose_name_plural = 'Cities'

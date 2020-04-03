@@ -23,6 +23,7 @@ def home(request):
         latest_review_list = countryReview.objects.order_by('-publish_date')[:5]
         context_dict['continents'] = continent_list
         context_dict['reviews'] =  latest_review_list
+
     except Continent.DoesNotExist:
         context_dict['continents'] = None
         context_dict['reviews'] = None
@@ -30,27 +31,57 @@ def home(request):
 
 def home_continent(request, continent_name_slug):
     context_dict = {}
+    context_dict['continent_slug'] = Continent.objects.get(slug=continent_name_slug).slug
+    context_dict['continent_name'] = Continent.objects.get(slug=continent_name_slug).name
     try:
-        country_list = Country.objects.filter(Continent=continent_name_slug).order_by('-likes')[:10]
-        review_list = countryReview.objects.order_by('-likes')[:5]
+        country_list = []
+        for country in Country.objects.all():
+            if country.getContinentSlug() == continent_name_slug:
+                country_list.append(country)
+
+        review_list = []
+        for review in countryReview.objects.all():
+            if review.belong_country.getContinentSlug() == continent_name_slug:
+                review_list.append(review)
+        for review in cityReview.objects.all():
+            if review.belong_city.country.getContinentSlug() == continent_name_slug:
+                review_list.append(review)
+
         context_dict['countries'] = country_list
-        context_dict['reviews'] = review_list
+        context_dict['reviews'] = review_list[:5]
     except Country.DoesNotExist:
         context_dict['countries'] = None
         context_dict['reviews'] = None
+
     return render(request, 'GlobetrottersGuide/home_continent.html', context=context_dict)
 
-def home_country(request, country_name_slug):
+def home_country(request,continent_name_slug, country_name_slug):
     context_dict = {}
+    country = Country.objects.get(slug=country_name_slug)
+    context_dict['continent_slug'] = Continent.objects.get(slug=continent_name_slug).slug
+    context_dict['country_slug'] = country.slug
+    context_dict['country_name'] = country.name
     try:
-        city_list = City.objects.filter(Country=country_name_slug).order_by('-likes')[:10]
-        review_list = cityReview.objects.order_by('-likes')[:5]
+        city_list = []
+        for city in City.objects.all():
+            if city.getCountrySlug() == country_name_slug:
+                city_list.append(city)
+
+        review_list = []
+        for review in countryReview.objects.all():
+            if review.belong_country.slug == country_name_slug:
+                review_list.append(review)
+        for review in cityReview.objects.all():
+            if review.belong_city.getCountrySlug() == country_name_slug:
+                review_list.append(review)
+
         context_dict['cities'] = city_list
-        context_dict['reviews'] = review_list
+        context_dict['reviews'] = review_list[:5]
     except City.DoesNotExist:
         context_dict['cities'] = None
         context_dict['reviews'] = None
     return render(request, 'GlobetrottersGuide/home_country.html', context=context_dict)
+
 
 @login_required
 def add_countryReview(request, country_name_slug):

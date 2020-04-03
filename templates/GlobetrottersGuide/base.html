@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'home_style.css' %}" />
+    </head>
+    <body>
+        <div>
+            <a href="/home/">
+                <img id="logo" src="{% static 'images/gtg_logo.ico' %}"width="150" height="150"/>
+                <h1 id="title">Globetrotter's Guide</h1>
+            </a>
+            {% block title_block %}
+            {% endblock %}
+        </div>
+        <div>
+            {% block list_block %}
+            Nothing found.
+            {% endblock %}
+        </div>
+
+        {% if user.is_authenticated %}
+            <p id="welcomeuser">Welcome, {{ user.username }}</p>
+        {% endif %}
+
+        {% block img_block %}
+        {% endblock %}
+        <div>
+            {% block reviews_block %}
+            {% endblock %}
+        </div>
+
+        <h2 id="reviewstitle">Most Recent Reviews</h2>
+        {% if reviews %}
+        <ul id="reviewslist">
+            {% for review in reviews %}
+            <li id="review"> 
+                {% if review.belong_country %}
+                <p style="font-size:90%; color: blue;">{{review.likes}} likes &emsp; {{review.user}}, {{review.belong_country}}  &emsp; {{ review.publish_date | date:"F d Y" }} </p> 
+                {% else %}
+                <p style="font-size:90%; color: blue;">{{review.likes}} likes &emsp; {{review.user}}, {{review.belong_city}}  &emsp; {{ review.publish_date | date:"F d Y" }} </p> 
+                {% endif %}
+                <p>{{review.text}}</p> 
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </body>
+</html>
