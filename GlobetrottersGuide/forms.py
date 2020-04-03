@@ -19,14 +19,22 @@ class UserProfileForm(forms.ModelForm):
         fields = ('picture', 'nationality')
 
 
+class EditProfileForm(forms.ModelForm):
+    username = forms.CharField(label='username')
+    nationality = forms.CharField(label='nationality')
+
+    class Meta:
+        model = UserProfile
+        fields = ('username', 'nationality')
+
+
 class countryReviewForm(forms.ModelForm):
     text = forms.CharField(widget=forms.Textarea(attrs={'rows':40,'cols':20}),
                            max_length=countryReview.TEXT_MAX_LENGTH,
                            help_text='Share your experience.')
-
     class Mate:
         model = countryReview
-        fields = ('timeSpent', 'image', 'text', 'belong_country')
+        fields = ('user','timeSpent', 'image', 'text', 'belong_country')
 
 
 class cityReviewForm(forms.ModelForm):
@@ -36,4 +44,4 @@ class cityReviewForm(forms.ModelForm):
 
     class Mate:
         model = cityReview
-        fields = ('timeSpent', 'image', 'text', 'belong_city')
+        fields = ('user', 'timeSpent', 'image', 'text', 'belong_city')

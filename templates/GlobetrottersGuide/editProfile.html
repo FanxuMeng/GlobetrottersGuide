@@ -1,0 +1,16 @@
+{% extends 'GlobetrottersGuide/base.html' %}
+
+{% block title %}
+<h1>Edit Profile</h1>
+{% endblock %}
+
+
+{% block body_block %}
+
+<form method="POST" action="{% url 'EditProfile' %}" class="" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+
+{% endblock %}

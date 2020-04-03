@@ -1,0 +1,75 @@
+body {
+    background-color: whitesmoke;
+  }
+#title {
+  position: absolute;
+  top: 0%;
+  left: 13%;
+  margin-left: 1%;
+  font-size: 250%;
+  }
+#leftitem{
+  padding: 10%;
+  padding-left: 20%;
+  padding-right: 25%;
+}
+#leftlist{
+  position: absolute;
+  width: 30%;
+  border: 3px solid #000000;
+  background: linen;
+  list-style-type: none;
+  margin-left: 8%;
+  top: 20%;
+  columns: 2;
+  column-width: 10%;
+  min-height: 100%;
+}
+#reviewslist{
+  position: absolute;
+  top: 78%;
+  right: 15%;
+  font-size: 30px;
+  width: 40%;
+  list-style-type: none;
+  align-items: center;
+}
+#geomap{
+  position: absolute;
+  width: 40%;
+  height: 50%;
+  top: 22%;
+  right: 15%;
+}
+#reviewstitle{
+  position: absolute;
+  top: 72%;
+  left: 45%;
+  font-size: 30px;
+}
+#review{
+  padding-left: 5%;
+  font-size: 80%;
+  border: 2px solid #000000;
+  background: linen;
+}
+#pagetitle{
+  position: absolute;
+  top: 8%;
+  left: 13%;
+  margin-left: 1%;
+  font-size: 200%;
+}
+#welcomeuser{
+  position: absolute;
+  top: 2%;
+  left: 70%;
+  font-size: 150%;
+}
+#flagimg{
+  position: absolute;
+  width: 35%;
+  height: 50%;
+  top: 15%;
+  right: 19%;
+}

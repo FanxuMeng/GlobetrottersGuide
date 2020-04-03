@@ -11,8 +11,10 @@ urlpatterns = [
 
     path('user/<int:user_id>/',
          views.showUserProfile, name='UserProfile'),
-    path('user/<int:user_id>/likes/',
+    path('use/likes/<int:user_id>/',
          views.showLikes, name='UserLiked'),
+
+    path('user/<int:user_id>/editProfile', views.editProfile, name= 'EditProfile'),
 
     path('<slug:continent_name_slug>/',
          views.home_continent, name='continent'),
@@ -21,11 +23,11 @@ urlpatterns = [
     path('<slug:continent_name_slug>/<slug:country_name_slug>/<slug:city_name_slug>/',
          views.home_city, name='city'),
     path('writeCountryReview/',
-         views.add_countryReview, name='Reviewing'),
+         views.add_countryReview, name='ReviewCountry'),
     path('writeCityReview/',
-         views.add_cityReview, name='Reviewing'),
-    path('<slug:continent_name_slug>/<slug:country_name_slug>/<int:cityReview_id>/',
-         views.review_detail, name='review'),
-    path('<slug:continent_name_slug>/<int:countryReview_id>/',
-         views.review_detail, name='review'),
+         views.add_cityReview, name='ReviewCity'),
+    #path('<slug:continent_name_slug>/<slug:country_name_slug>/<int:cityReview_id>/',
+    #     views.review_detail, name='review'),
+    #path('<slug:continent_name_slug>/<int:countryReview_id>/',
+    #     views.review_detail, name='review'),
 ]

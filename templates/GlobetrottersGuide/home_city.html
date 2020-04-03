@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% load staticfiles %}
 
-</body>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'city_style.css' %}" />
+    </head>
+    <body>
+        <div>
+            <a href="/home/">
+                <img id="logo" src="{% static 'images/gtg_logo.ico' %}"width="150" height="150"/>
+                <h1 id="title">Globetrotter's Guide</h1>
+            </a>
+            {% block title_block %}
+            {% endblock %}
+        </div>
+
+        {% if user.is_authenticated %}
+            <p id="welcomeuser">Welcome, {{ user.username }}</p>
+        {% endif %}
+
+        {% with 'flags/'|add:country_slug|add:'.png' as img %}
+            <img id="flag" src="{% static img %}" />
+        {% endwith %}
+
+        <p id="listtitle">{{ city_name }} has {{ review_num }} reviews.</p>
+
+        {% if reviews %}
+        <ul id="reviewslist">
+            {% for review in reviews %}
+            <li id="review">
+                <p style="font-size:90%; color: blue;">{{review.likes}} likes &emsp; {{review.user}} was there for {{review.timeSpent.days}} years  &emsp; {{ review.publish_date | date:"F d Y" }} &emsp; {{review.rating}}  <img src="{% static 'images/star.png' %}"width="3%" height="3%"/> </p>
+                <p>{{review.text}}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </body>
 </html>

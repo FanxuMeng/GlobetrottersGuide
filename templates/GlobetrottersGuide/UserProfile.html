@@ -1,10 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'GlobetrottersGuide/base.html' %}
 
-</body>
-</html>
+{% load staticfiles %}
+
+
+{% if not user.is_authenticated %}
+{% block title %} - Welcome, {{user.username}} {% endblock %}
+{% else %}
+{% block title %} - {{user.username}}'s Profile {% endblock %}
+{% endif %}
+
+
+
+{% block img_block %}
+<img src="{{ user.picture }}" width = "150" height = "150"  />
+{% endblock %}
+
+
+{% block body_block %}
+
+<p>{{user.nationality}}</p>
+
+<h1> {{user.username}}'s City Reviews </h1>
+
+<p>{{user.cityReview}}</p>
+
+<h1> {{user.username}}'s Country Reviews </h1>
+
+<p>{{user.countryReview}}</p>
+
+{% if object == request.user and request.user.is_authenticated %}
+<p><a href='{% url "editProfile" %}'>Edit My Profile</a></p>
+{% endif %}
+
+{% endblock %}
