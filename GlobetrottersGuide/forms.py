@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from django import forms
-from GlobetrottersGuide.models import UserProfile
+from GlobetrottersGuide.models import UserProfile, editProfile
 from GlobetrottersGuide.models import countryReview, cityReview
 from django.contrib.auth.models import User
 
@@ -18,6 +18,14 @@ class UserProfileForm(forms.ModelForm):
     class Mata:
         model = UserProfile
         fields = ('picture', 'nationality')
+
+class EditProfileForm(forms.ModelForm):
+    username = forms.CharField(label='username')
+    nationality = forms.CharField(label='nationality') 
+
+    class Meta:
+        model = UserProfile
+        fields = ('username', 'nationality')
 
 
 class countryReviewForm(forms.ModelForm):

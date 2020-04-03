@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
@@ -7,6 +7,7 @@ from datetime import datetime
 
 from GlobetrottersGuide.forms import countryReviewForm
 from GlobetrottersGuide.forms import cityReviewForm
+from GlobetrottersGuide.forms import EditProfileForm
 
 from GlobetrottersGuide.models import UserProfile
 from GlobetrottersGuide.models import countryReview,cityReview
@@ -141,6 +142,23 @@ def showUserProfile(request):
         context_dict['cityReview'] = None
 
     return render(request, 'GlobetrottersGuide/UserProfile.html', context=context_dict)
+
+def editProfile(request):
+    user = request.user
+    form = EditProfileForm(request.POST or None, initial={'username':user.username, 'nationality':user.nationality})
+    if request.method == 'POST':
+        if form.is_valid():
+
+            user.nationality = request.POST['nationality']
+            user.username = request.POST['username']
+
+            user.save()
+            
+            
+            return HttpResponseRedirect('%s'%(reverse('profile')))
+        
+    
+    return render(request, 'GlobetrottersGuide/editProfile.html', {"form": form})
     
 ### restructured showLikes and home_city to handle empty gets
 def showLikes(request):
