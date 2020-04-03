@@ -83,6 +83,28 @@ def home_country(request,continent_name_slug, country_name_slug):
     return render(request, 'GlobetrottersGuide/home_country.html', context=context_dict)
 
 
+def home_city(request,continent_name_slug, country_name_slug, city_name_slug):
+    context_dict = {}
+    country = Country.objects.get(slug=country_name_slug)
+    city = City.objects.get(slug=city_name_slug)
+    context_dict['country_slug'] = country.slug
+    context_dict['country_name'] = country.name
+    context_dict['city_name'] = city.name
+
+    try:
+        review_list = []
+        for review in cityReview.objects.all():
+            if review.belong_city.slug == city_name_slug:
+                review_list.append(review)
+
+        context_dict['reviews'] = review_list
+        context_dict['review_num'] = len(review_list)
+        
+    except review_list.DoesNotExist:
+        context_dict['reviews'] = None
+    
+    return render(request,'GlobetrottersGuide/home_city.html', context_dict)
+
 @login_required
 def add_countryReview(request, country_name_slug):
     country = get_object_or_404(Country, pk=country_name_slug)
@@ -211,17 +233,5 @@ def showLikes(request):
     return render(request,template,ctxDct)
 
 
-def home_city(request, city_name_slug):
 
-    template = 'GlobetrottersGuide/home_city.html' ### template
-    ctxDct = {}
-
-    try:
-        review_list = cityReview.objects.filter(belong_city=city_name_slug)
-        ctxDct['review_list'] = review_list
-        
-    except review_list.DoesNotExist:
-        ctxDct['review_list'] = None
-    
-    return render(request,template, ctxDct)
 

@@ -37,9 +37,9 @@
             {% for review in reviews %}
             <li id="review"> 
                 {% if review.belong_country %}
-                <p style="font-size:90%; color: blue;">{{review.likes}} likes &emsp; {{review.user}}, {{review.belong_country}}  &emsp; {{ review.publish_date | date:"F d Y" }} </p> 
+                <p style="font-size:90%; color: blue;">{{review.likes}} likes &emsp; {{review.user}}, {{review.belong_country}}  &emsp; {{ review.publish_date | date:"F d Y" }}  &emsp; {{review.rating}}  <img src="{% static 'images/star.png' %}"width="3%" height="3%"/> </p> 
                 {% else %}
-                <p style="font-size:90%; color: blue;">{{review.likes}} likes &emsp; {{review.user}}, {{review.belong_city}}  &emsp; {{ review.publish_date | date:"F d Y" }} </p> 
+                <p style="font-size:90%; color: blue;">{{review.likes}} likes &emsp; {{review.user}}, {{review.belong_city}}  &emsp; {{ review.publish_date | date:"F d Y" }} &emsp; {{review.rating}}  <img src="{% static 'images/star.png' %}"width="3%" height="3%"/> </p> 
                 {% endif %}
                 <p>{{review.text}}</p> 
             </li>

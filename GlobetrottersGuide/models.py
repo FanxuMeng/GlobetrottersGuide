@@ -91,6 +91,9 @@ class countryReview(models.Model):
     text = models.TextField(max_length=2000, blank=False)
     rating = models.IntegerField(choices=RATING_CHOICES)
 
+    def save(self, *args, **kwargs):
+        super(countryReview, self).save(*args, **kwargs)
+
 
 class cityReview(models.Model):
     TEXT_MAX_LENGTH = 2000
@@ -115,6 +118,9 @@ class cityReview(models.Model):
     title = models.CharField(max_length=128, default='Title')
     text = models.TextField(max_length=2000, blank=False)
     rating = models.IntegerField(choices=RATING_CHOICES)
+
+    def save(self, *args, **kwargs):
+        super(cityReview, self).save(*args, **kwargs)
 
 
 class UserProfile(models.Model):
