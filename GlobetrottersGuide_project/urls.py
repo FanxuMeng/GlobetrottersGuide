@@ -29,6 +29,8 @@ urlpatterns = [
         views.showUserProfile, name='UserProfile'),
     path('user/<int:user_id>/likes/',
         views.showLikes, name='UserLiked'),
+         
+    path('user/<int:user_id>/editProfile', views.editProfile, name= 'EditProfile'),
 
 
     path('<slug:continent_name_slug>/',
