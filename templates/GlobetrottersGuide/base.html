@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
-{% load GlobetrottersGuide_template_tags %}
+
 
 <html lang="en">
     <head>
@@ -23,10 +23,10 @@
 
     <body>
         <header>
-            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary p-0">
-                <a class="navbar-brand p-2" href="{% url 'GlobetrottersGuide:home' %}">
+            <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light p-0 shadow-sm">
+                <a class="navbar-brand p-2" href="{% url 'GlobetrottersGuide:HomePage' %}">
                     <img src="{% static 'images/gtg_logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
-                    GlobetrottersGuide
+                    Globetrotter's Guide
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -34,43 +34,44 @@
 
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link" href="{% url 'GlobetrottersGuide:home' %}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'GlobetrottersGuide:HomePage' %}">Home</a></li>
                         <li class="nav-item "><a class="nav-link" href="{% url 'GlobetrottersGuide:about' %}">About</a></li>
+                    </ul>
                         {% if user.is_authenticated %}
-
-                            <li class="nav-item dropdown">
-                            <a class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" role="button">{{ user.username }}</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">User Profile</a>
-                                <a class="dropdown-item" href="#">Likes</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Log Out</a>
-                            </div>
-                            </li>
+                    <ul class="navbar-nav mr-mid-3">
+                        <li class="nav-item dropdown">
+                        <a class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" role="button">{{ user.username }}</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'GlobetrottersGuide:UserProfile' %}">User Profile</a>
+                            <a class="dropdown-item" href="{% url 'GlobetrottersGuide:UserLiked'%}">Likes</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'auth_logout' %}">Log Out</a>
+                        </div>
+                        </li>
+                        <img class="rounded-circle" src="{{MEDIA_URL}}profile_images/casc.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+                    </ul>
 
                         {% else %}
-
-
+                        <a class="btn btn-outline-success" href="{% url 'auth_login' %}">Login</a>
+                        <a class="btn btn-outline-primary" href="{% url 'registration_register' %}">Sign up</a>
                         {% endif %}
-                    </ul>
-                </div>
 
+                </div>
             </nav>
         </header>
 
         <div class="container-fluid">
             <div class="row">
-
-
                 <main role="main" class="col-md-9  ml-sm-auto col-lg-10 px-4">
-                    {% block body_block %}{% endblock %}
+                    {% block body_block %}
 
-                    <!-- FOOTER -->
-                    <footer>
-                        <p class="float-right"><a href="#">Back to top</a></p>
-                        <p>&copy; 2020 GlobetrottersGuide &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-                    </footer>
+
+                    {% endblock %}
                 </main>
+
+                <!-- FOOTER -->
+                    <hr>
+                    <footer class="container"><p>&copy; 2020 Globetrotter's Guide </p></footer>
             </div>
         </div>
 

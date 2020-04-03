@@ -22,8 +22,8 @@ from GlobetrottersGuide import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', include('GlobetrottersGuide.urls')),
-    path('', views.home, name='home'),
+    path('GlobetrottersGuide/', include('GlobetrottersGuide.urls')),
+    path('', views.home, name='HomePage'),
     path('accounts/', include('registration.backends.simple.urls'))
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

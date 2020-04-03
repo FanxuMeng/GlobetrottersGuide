@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c38e4df1-fd9a-4cb6-843a-1e6e73f73f83" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/css/dashboard.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/gtg_logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/add_cityReview.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/media/profile_images/casc.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GlobetrottersGuide/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GlobetrottersGuide/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GlobetrottersGuide_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide_project/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GlobetrottersGuide_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide_project/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/GlobetrottersGuide/add_review.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/add_countryReview.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/dashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/GlobetrottersGuide/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/GlobetrottersGuide/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +40,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tango_with_django_project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/media/profile_images" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -56,6 +54,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\rangoWorkspace\GlobetrottersGuide_project\media\profile_images" />
       <recent name="D:\rangoWorkspace\GlobetrottersGuide_project\static\images" />
       <recent name="D:\rangoWorkspace\GlobetrottersGuide_project\static\css" />
       <recent name="D:\rangoWorkspace\GlobetrottersGuide_project\static\continent" />
@@ -81,7 +80,7 @@
       <workItem from="1585772214289" duration="120000" />
       <workItem from="1585772346530" duration="24424000" />
       <workItem from="1585841638459" duration="31000" />
-      <workItem from="1585841680036" duration="4559000" />
+      <workItem from="1585841680036" duration="15126000" />
     </task>
     <servers />
   </component>
@@ -121,5 +120,9 @@
     </state>
     <state x="786" y="0" width="756" height="840" key="dock-window-3/0.0.1536.834@0.0.1536.834" timestamp="1584117359168" />
     <state x="1047" y="100" width="858" height="880" key="dock-window-3/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1585782374911" />
+    <state x="268" y="233" width="672" height="678" key="search.everywhere.popup" timestamp="1585855975551">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="268" y="233" width="672" height="678" key="search.everywhere.popup/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1585855975551" />
   </component>
 </project>
