@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+from django.views import View
 
 from GlobetrottersGuide.forms import countryReviewForm
 from GlobetrottersGuide.forms import cityReviewForm
@@ -231,7 +232,77 @@ def showLikes(request):
         ctxDct['likes'] = None
 
     return render(request,template,ctxDct)
+### get lists for search suggestions
+def getContinentList(maxResults=0, startsWith=''):
+    continentList = []
 
+    if startsWith:
+        continentList = Continent.objects.filter(name__isstartswith=startsWith)
+    if maxResults > 0:
+        if len(continentList)>maxResults:
+            continentList = continentList[:maxResults]
+    return continentList
 
+def getCityList(maxResults=0, startsWith=''):
+    cityList = []
+
+    if startsWith:
+        cityList = City.objects.filter(name__isstartswith=startsWith)
+    if maxResults > 0:
+        if len(cityList)>maxResults:
+            cityList = cityList[:maxResults]
+    return cityList
+
+def getCountryList(maxResults=0, startsWith=''):
+    countryList = []
+
+    if startsWith:
+        countryList = Country.objects.filter(name__isstartswith=startsWith)
+    if maxResults > 0:
+        if len(countryList)>maxResults:
+            countryList = countryList[:maxResults]
+    return countryList
+## throw out some search suggestions
+class suggestionView(View):
+    def get(self,request):
+        theList = []
+        loopOut = False
+        notContinent = True
+        notCountry = True
+        notCity = True
+        if 'suggestion' in request.GET:
+            suggestion = request.GET['suggestion']
+        else:
+            suggestion = ''
+
+        while(loopOut==False):
+            theList = getContinentList(5,suggestion)
+            template = "continents.html" ##change this
+            ctxDct = {'Continents': theList}
+            theList = Continent.objects.order_by('-name')
+            notContinent = False
+            loopOut = True
+            if len(theList) == 0 and notContinent == True:
+                theList = getCountryList(4,suggestion)
+                template = "country.html" ##change this
+                ctxDct = {'Countries': theList}
+                theList = Country.objects.order_by('-name')
+                notCountry = False
+                loopOut = True
+            elif len(theList) == 0 and notContinent == True and notCountry == True:
+                theList = getCityList(4,suggestion)
+                template = "city.html" ##change this
+                ctxDct = {'City':theList}
+                theList = City.objects.order_by('-name')
+                notCity = False
+                loopOut = True
+            elif len(theList) == 0 and notContinent == True and notCountry == True and notCity == True:
+                theList = []
+                ctxDct = {}
+                template = ""## whatever
+                loopOut = True
+
+        return render(request,template,ctxDct)
+            
 
 
