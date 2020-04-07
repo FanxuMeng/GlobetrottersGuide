@@ -266,42 +266,32 @@ def getCountryList(maxResults=0, startsWith=''):
 class suggestionView(View):
     def get(self,request):
         theList = []
-        loopOut = False
-        notContinent = True
-        notCountry = True
-        notCity = True
+        
         if 'suggestion' in request.GET:
             suggestion = request.GET['suggestion']
         else:
             suggestion = ''
 
-        while(loopOut==False):
+        if len(theList) == 0:
             theList = getContinentList(5,suggestion)
             template = "continents.html" ##change this
-            ctxDct = {'Continents': theList}
-            theList = Continent.objects.order_by('-name')
-            notContinent = False
-            loopOut = True
-            if len(theList) == 0 and notContinent == True:
+            ctxDct = {'Results': theList}
+            theList = Continent.objects.order_by('-name')##order the results by name
+            if len(theList) == 0:
                 theList = getCountryList(4,suggestion)
                 template = "country.html" ##change this
-                ctxDct = {'Countries': theList}
-                theList = Country.objects.order_by('-name')
-                notCountry = False
-                loopOut = True
-            elif len(theList) == 0 and notContinent == True and notCountry == True:
-                theList = getCityList(4,suggestion)
-                template = "city.html" ##change this
-                ctxDct = {'City':theList}
-                theList = City.objects.order_by('-name')
-                notCity = False
-                loopOut = True
-            elif len(theList) == 0 and notContinent == True and notCountry == True and notCity == True:
-                theList = []
-                ctxDct = {}
-                template = ""## whatever
-                loopOut = True
-
+                ctxDct = {'Results': theList}
+                theList = Country.objects.order_by('-name')##order the results by name
+                if len(theList) == 0:
+                    theList = getCityList(4,suggestion)
+                    template = "city.html" ##change this
+                    ctxDct = {'Results':theList}
+                    theList = City.objects.order_by('-name')##order the results by name
+                    if len(theList) == 0:
+                        theList = [] ##stay empty
+                        ctxDct = {'Results':theList} ## 
+                        template = ""## whatever
+                        
         return render(request,template,ctxDct)
             
 
