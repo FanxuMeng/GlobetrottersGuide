@@ -8,5 +8,5 @@ app_name = 'GlobetrottersGuide'
 urlpatterns = [
     path('',views.home, name='HomePage'),
     path('about/',views.about, name='about'),
-
+    path('suggest/',views.suggestionView.as_view(),name='suggest'),
 ]
