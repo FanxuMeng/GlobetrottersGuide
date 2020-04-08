@@ -8,15 +8,15 @@ register = template.Library()
 
 @register.inclusion_tag('GlobetrottersGuide/home.html')
 def get_continet_list(current_continet=None):
-    return {'categories':Continent.objects.all(),
+    return {'continent':Continent.objects.all(),
             'current_continet':current_continet}
 
 @register.inclusion_tag('GlobetrottersGuide/home_country.html')
 def get_city_list(current_city=None):
-    return {'categories':City.objects.all(),
+    return {'city':City.objects.all(),
             'current_city':current_city}
 
 @register.inclusion_tag('GlobetrottersGuide/home_continent.html')
 def get_country_list(current_country=None):
-    return {'categories':Country.objects.all(),
+    return {'country':Country.objects.all(),
             'current_country':current_country}

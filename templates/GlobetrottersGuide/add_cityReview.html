@@ -2,21 +2,21 @@
 {% extends "GlobetrottersGuide/base.html" %}
 
 {% block title %}
-    Add Page
+
 {% endblock %}
 
 {% block body_block %}
 
 <div class="jumbotron p-4">
     <div class="container">
-        <h1 class="jumbotron-heading">Share your experience in {{category.name}}</h1>
+        <h1 class="jumbotron-heading">Share your experience in {{city.name}}</h1>
     </div>
 </div>
 
 <div class="container">
     <div class="row">
         <form role="form" id="page_form" method="post"
-            action="{% url 'GlobetrottersGuide:ReviewCity' category.slug %}">
+            action="{% url 'GlobetrottersGuide:add_cityReview' city.country.continent.slug city.country.slug city.slug %}">
 
                 {% if user.is_authenticated %}
 

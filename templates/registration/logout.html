@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-{% extends 'GlobetrottersGuide/base-old.html' %}
+{% extends 'GlobetrottersGuide/base.html' %}
 
 {% block title_block %}
-Logged Out
+    <h1>Logged Out</h1>
 {% endblock %}
 
 {% block body_block %}
-<h1>Logged Out</h1>
+    <p>
+    You have been successfully logged out.
+    </p>
 
-<p>
-You have been successfully logged out.
-</p>
+    <p>
+    Back to Home Page Please Click <a href={% url 'GlobetrottersGuide:HomePage' %}>ME!!!</a>
+    </p>
 {% endblock %}
 

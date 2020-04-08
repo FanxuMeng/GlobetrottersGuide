@@ -1,6 +1,5 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
-
 from django import forms
 from GlobetrottersGuide.models import UserProfile
 from GlobetrottersGuide.models import countryReview, cityReview
@@ -29,19 +28,42 @@ class EditProfileForm(forms.ModelForm):
 
 
 class countryReviewForm(forms.ModelForm):
-    text = forms.CharField(widget=forms.Textarea(attrs={'rows':40,'cols':20}),
+    timeSpent = forms.DurationField()
+    title = forms.CharField(widget=forms.Textarea(attrs={'rows': 1, 'cols': 20}))
+    image = forms.ImageField()
+    text = forms.CharField(widget=forms.Textarea(attrs={'rows': 40, 'cols': 20}),
                            max_length=countryReview.TEXT_MAX_LENGTH,
                            help_text='Share your experience.')
+
     class Mate:
         model = countryReview
-        fields = ('user','timeSpent', 'image', 'text', 'belong_country')
+        fields = ('title', 'timeSpent', 'image', 'text')
+
+    def clean(self):
+        cleaned_data = self.cleaned_data
+        timeSpent = cleaned_data.get('timeSpent')
+        timeSpent = f'{timeSpent} days'
+        cleaned_data['timeSpent'] = timeSpent
+
+        return cleaned_data
 
 
 class cityReviewForm(forms.ModelForm):
-    text = forms.CharField(widget=forms.Textarea(attrs={'rows':40,'cols':20}),
-                           max_length=cityReview.TEXT_MAX_LENGTH,
+    timeSpent = forms.DurationField()
+    title = forms.CharField(widget=forms.Textarea(attrs={'rows': 1, 'cols': 20}))
+    image = forms.ImageField()
+    text = forms.CharField(widget=forms.Textarea(attrs={'rows': 40, 'cols': 20}),
+                           max_length=countryReview.TEXT_MAX_LENGTH,
                            help_text='Share your experience.')
 
     class Mate:
         model = cityReview
-        fields = ('user', 'timeSpent', 'image', 'text', 'belong_city')
+        fields = ('title', 'timeSpent', 'image', 'text')
+
+    def clean(self):
+        cleaned_data = self.cleaned_data
+        timeSpent = cleaned_data.get('timeSpent')
+        timeSpent = f'{timeSpent} days'
+        cleaned_data['timeSpent'] = timeSpent
+
+        return cleaned_data

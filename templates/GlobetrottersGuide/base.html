@@ -13,62 +13,80 @@
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/4.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-    <!-- Custom styles for this template -->
-    <!--<link href="static/css/dashboard.css" rel="stylesheet">-->
+    <link href="{%  static 'css/base-style.css' %}" rel="stylesheet">
     </head>
 
     <body>
         <header>
             <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light p-0 shadow-sm">
+
                 <a class="navbar-brand p-2" href="{% url 'GlobetrottersGuide:HomePage' %}">
                     <img src="{% static 'images/gtg_logo.ico' %}" width="30" height="30" class="d-inline-block align-top" alt="">
                     Globetrotter's Guide
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" style="position:inherit;right:10px;">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link" href="{% url 'GlobetrottersGuide:HomePage' %}">Home</a></li>
-                        <li class="nav-item "><a class="nav-link" href="{% url 'GlobetrottersGuide:about' %}">About</a></li>
-                    </ul>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active"><a class="nav-link" style="padding:8px 16px 8px 16px;" href="{% url 'GlobetrottersGuide:HomePage' %}">Home</a></li>
+                            <li class="nav-item active"><a class="nav-link" style="padding:8px 16px 8px 16px;" href="{% url 'GlobetrottersGuide:about' %}">About</a></li>
+                        </ul>
+
+
+                        <form class="form-inline">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+
+
                         {% if user.is_authenticated %}
-                        <a class="navbar-nav mr-mid-3">
-                            <li class="nav-item dropdown ml-auto">
-                                <a class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" role="button">{{ user.username }}</a>
+                            <ul class="nav-item dropdown" style="margin:0;padding:0;">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
+                                   aria-labelledby="navbarDropdownMenuLink" role="button">{{ user.username }}
+                                </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{% url 'GlobetrottersGuide:UserProfile' request.user.id  %}">User Profile</a>
-                                    <a class="dropdown-item" href="{% url 'GlobetrottersGuide:UserLiked' request.user.id %}">Likes</a>
+                                    <a class="dropdown-item" href="{% url 'GlobetrottersGuide:UserProfile' request.user.username %}">User Profile</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{% url 'auth_logout' %}">Log Out</a>
                                 </div>
-                            </li>
-                        </a>
-                        <a id="userInfo" href="{% url 'GlobetrottersGuide:UserProfile' request.user.id %}">
-                            <img class="rounded-circle" src="{{ user.UserProfile.picture }}" width="30" height="30" class="d-inline-block align-top" alt="">
-                        </a>
-                        {% else %}
-                        <a class="btn btn-outline-success" href="{% url 'auth_login' %}">Login</a>
-                        <a class="btn btn-outline-primary" href="{% url 'registration_register' %}">Sign up</a>
+                            </ul>
+
+
                         {% endif %}
-                </div>
+                    </div>
+
+                        {% if user.is_authenticated %}
+                            <a class="navbar-brand p-2" href="{% url 'GlobetrottersGuide:UserProfile' user.id %}">
+                            <img src="{{ user.UserProfile.picture.url }}" width="30" height="30" class="d-inline-block align-top" alt="">
+                            </a>
+
+                            <!--<a class="nav-link" href="{% url 'GlobetrottersGuide:UserProfile' request.user.id %}"><img class="rounded-circle" src="{{ request.user.UserProfile.picture.url }}" style="max-width:2.5rem" alt=""></a>-->
+                        {% else %}
+                            <div style="position:relative; right:50px">
+                            <a class="btn btn-outline-success" href="{% url 'auth_login' %}" style="margin:10px 0px 10px 70px" >Login</a>
+                            <a class="btn btn-outline-primary" href="{% url 'registration_register' %}" style="margin: 10px 20px 10px 0px;" >Sign up</a>
+                            </div>
+                        {% endif %}
+
             </nav>
         </header>
 
         <div class="container-fluid">
-            <div class="row" style="margin-top: 100px">
-                <main role="main" class="col-md-9  ml-sm-auto col-lg-10 px-4">
-                    {% block body_block %}
-
-
-                    {% endblock %}
+            <div class="row" style="margin: 100px 50px 100px 50px;">
+                <main role="main" class="col-md">
+                    {% block title_block %}{% endblock %}
+                    {% block body_block %}{% endblock %}
                 </main>
-
-                <!-- FOOTER -->
-                    <hr>
-                    <footer class="container" style="position:fixed;bottom:0"><p>&copy; 2020 Globetrotter's Guide </p></footer>
             </div>
+        </div>
+
+        <div>
+            <!-- FOOTER -->
+            <footer class="container" style="position:fixed;bottom:0"><p>&copy; 2020 Globetrotter's Guide </p></footer>
         </div>
 
         <!-- Bootstrap core JavaScript -->

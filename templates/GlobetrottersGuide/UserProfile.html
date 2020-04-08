@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 {% extends 'GlobetrottersGuide/base.html' %}
-
 {% load staticfiles %}
 
+{% block title_block%}
 
-{% if not user.is_authenticated %}
-{% block title %} - Welcome, {{user.username}} {% endblock %}
-{% else %}
-{% block title %} - {{user.username}}'s Profile {% endblock %}
-{% endif %}
+    <div class="row">
+        <div class="col">
+        <h1>{{ user.username }}'s Profile</h1>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="col">
+            <a role="button" class="btn btn-primary" href="" style="float:right">Edit Profile</a>
+        </div>
+        {% endif %}
+    </div>
 
-
-
-{% block img_block %}
-<img src="{{ user.picture }}" width = "150" height = "150"  />
 {% endblock %}
 
 
 {% block body_block %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <span class="border border-primary">
+                    <img class="rounded" src="{{ user.UserProfile.picture.url }}" alt="No Image">
+                </span>
+            </div>
+            <div class="col">
+                <p><h3>User Name: {{ user.username }}</h3></p>
+                <p>{{ user__UserProfile_nationality__name }}</p>
+            </div>
+        </div>
+    </div>
 
-<p>{{user.nationality}}</p>
-
-<h1> {{user.username}}'s City Reviews </h1>
-
-<p>{{user.cityReview}}</p>
-
-<h1> {{user.username}}'s Country Reviews </h1>
-
-<p>{{user.countryReview}}</p>
-
-{% if object == request.user and request.user.is_authenticated %}
-<p><a href='{% url "editProfile" %}'>Edit My Profile</a></p>
-{% endif %}
 
 {% endblock %}

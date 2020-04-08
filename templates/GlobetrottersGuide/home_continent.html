@@ -1,40 +1,93 @@
 <!DOCTYPE html>
 {% extends 'GlobetrottersGuide/base.html' %}
 {% load staticfiles %}
+{% load gtg_template_tags %}
 
 {%block title_block %}
-<h1 id="pagetitle">Home</h1>
+    <h1>{{ continent.name }}</h1>
 {% endblock %}
 
 {% block body_block %}
-    {% if continents %}
-        <div style="overflow: hidden">
-            <ul id="leftlist" style="width: 40%;border: 1px solid lightblue;padding: 20px;float: left;min-height: 300px">
-                {% for continent in continents %}
-                <li id="leftitem" style="list-style: none">
-                    <a href="/{{ continent.slug }}/">{{ continent.name }}<span style="margin-left:50px;float: right">{{ continent.likes }}</span></a>
-                </li>
-                {% endfor %}
-            </ul>
-            <div style="width: 50%;float: right">
-                <img src="{% static 'continent/worldmap.png' %}" style="width: 100%;">
-            </div>
-        </div>
-        <div>
-            <div>
-                {% for item in reviews %}
-                <div style="width: 25%; float: left;border: 1px solid lightblue;min-height: 200px;padding: 20px">
-                    <h4>{{ item }}</h4>
-                    <p>neirong</p>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    {% else %}
-    <strong>There are no continents in the list.</strong>
-    {% endif %}
-{% endblock %}
+<div style="float:left;">
+    <ul class="list-group" style="margin:10px;width:18rem;">
+        {% if countries %}
+            {% for country in countries %}
+            <li class="list-group-item">
+                <a href="{% url 'GlobetrottersGuide:country' continent.slug country.slug %}">{{ country.name }}
+                    <span style="float:right">Visits: {{ country.views }}</span>
+                </a>
+            </li>
+            {% endfor %}
+        {% else %}
+            <li class="list-group-item">There is no country in database.</li>
+        {% endif %}
+    </ul>
 
-{% block img_block %}
-       <img id="geomap" src="{% static 'continent/worldmap.png' %}" />
+    {% with 'continent/'|add:continent.slug|add:'-0.png' as img %}
+        <div style="margin:10px;width:18rem;height:18rem;">
+          <img src="{% static img %}" class="d-block w-100" alt="">
+        </div>
+    {% endwith %}
+</div>
+    {% if country_reviews or city_reviews %}
+    {% for review in country_reviews %}
+        <div class="card" style="width: 18rem;margin:10px;float:left;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <h5>{{ review.belong_country.name }}</h5>
+                </li>
+            </ul>
+            {% if review.image %}
+            <img src="{{ review.image.url }}" class="card-img-top" alt="No Image">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ review.title }}</h5>
+                <p class="card-text">{{ review.text }}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    User:
+                    <a href="{% url 'GlobetrottersGuide:UserProfile' review.user.username %}">{{ review.user.username }}</a>
+                    &emsp; Rating: {{ review.rating }}/5
+                </li>
+                <li class="list-group-item">{{ review.likes }} likes &emsp; {{ review.views }} views</li>
+                <li class="list-group-item">{{ review.publish_date | date:"F d Y" }} &emsp; Spent: {{ review.timeSpent.days }} day(s)</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">View Detail</a>
+            </div>
+        </div>
+    {% endfor %}
+        {% for review in city_reviews %}
+        <div class="card" style="width: 18rem;margin:10px;float:left;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <h5>{{ review.belong_city.name }}</h5>
+                </li>
+            </ul>
+            {% if review.image %}
+            <img src="{{ review.image.url }}" class="card-img-top" alt="No Image">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ review.title }}</h5>
+                <p class="card-text">{{ review.text }}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    User:
+                    <a href="{% url 'GlobetrottersGuide:UserProfile' review.user.username %}">{{ review.user.username }}</a>
+                    &emsp; Rating: {{ review.rating }}/5
+                </li>
+                <li class="list-group-item">{{ review.likes }} likes &emsp; {{ review.views }} views &emsp; </li>
+                <li class="list-group-item">{{ review.publish_date | date:"F d Y" }} &emsp; Spent: {{ review.timeSpent.days }} day(s)</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">View Detail</a>
+            </div>
+        </div>
+    {% endfor %}
+    {% else %}
+        <p style="float:left;margin:10px"><h2>No one has reviewed countries in this continent yet.</h2></p>
+    {% endif %}
+
 {% endblock %}

@@ -7,7 +7,7 @@
 
 {% block body_block %}
 
-<form method="POST" action="{% url 'EditProfile' %}" class="" >
+<form method="POST" action=".">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Save</button>

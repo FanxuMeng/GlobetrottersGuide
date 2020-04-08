@@ -8,6 +8,7 @@ class Continent(models.Model):
 
     name = models.CharField(max_length=128, unique=True)
     likes = models.IntegerField(default=0)
+    views = models.IntegerField(default=0)
     slug = models.SlugField(unique=True)
 
     def save(self, *args, **kwargs):
@@ -21,11 +22,10 @@ class Continent(models.Model):
 class Country(models.Model):
     NAME_MAX_LENGTH = 128
 
-    Continent = models.ForeignKey(Continent, on_delete=models.CASCADE)
+    continent = models.ForeignKey(Continent, on_delete=models.CASCADE)
     name = models.CharField(max_length=128, unique=True)
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
-    review_count = models.IntegerField(default=0)
     flag = models.ImageField(upload_to='flags',blank=True)
     slug = models.SlugField(unique=True)
 
@@ -47,7 +47,6 @@ class City(models.Model):
     name = models.CharField(max_length=128, unique=True)
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
-    review_count = models.IntegerField(default=0)
     slug = models.SlugField(unique=True)
 
     def save(self, *args, **kwargs):
@@ -114,11 +113,7 @@ class cityReview(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     picture = models.ImageField(upload_to='profile_images', blank=True)
-    nationality = models.ForeignKey(Country, on_delete=models.CASCADE)
-    review_count = models.IntegerField(default=0)
-
-    liked_review_country = models.ManyToManyField(countryReview)
-    liked_review_city = models.ManyToManyField(cityReview)
+    nationality = models.ForeignKey(Country, on_delete=models.CASCADE, blank=True)
 
     def __str__(self):
         return self.user.username

@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-{% extends 'GlobetrottersGuide/base-old.html' %}
+{% extends 'GlobetrottersGuide/base.html' %}
 
 {% block title_block %}
-Register
+
 {% endblock %}
 
 {% block body_block %}
 <div class="container">
     <div class="row">
     <div class="form-group" >
+        <h1>JOIN US NOW</h1>
         <form role="form" method="post" action=".">
         {% csrf_token %}
         <div class="form-group">

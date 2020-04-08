@@ -19,7 +19,13 @@ def populate():
     jp_cities = ['Tokyo', 'Osaka', 'Kyoto']
 
     continent_dic = {'Asia':{'Japan':jp_cities,'China':cn_cities},
-                     'North America':{'America':usa_cities,'Canada':canada_city}}
+                     'North America':{'America':usa_cities,'Canada':canada_city},
+                     'Africa':{},
+                     'Antarctica':{},
+                     'Europe':{},
+                     'Oceania':{},
+                     'South America':{},
+                     }
 
     for continent, country in continent_dic.items():
         a = add_continent(continent)
@@ -35,7 +41,7 @@ def add_continent(name):
     return a
 
 def add_country(continent, name):
-    b = Country.objects.get_or_create(Continent=continent,name=name)[0]
+    b = Country.objects.get_or_create(continent=continent,name=name)[0]
     b.likes = 0
     b.views = 0
     b.save()
