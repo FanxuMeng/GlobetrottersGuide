@@ -10,6 +10,7 @@ class Continent(models.Model):
     likes = models.IntegerField(default=0)
     views = models.IntegerField(default=0)
     slug = models.SlugField(unique=True)
+    reviewNum = 0
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
@@ -28,10 +29,17 @@ class Country(models.Model):
     likes = models.IntegerField(default=0)
     flag = models.ImageField(upload_to='flags',blank=True)
     slug = models.SlugField(unique=True)
+    reviewNum = 0
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Country, self).save(*args, **kwargs)
+
+    def getContinentSlug(self):
+        return self.continent.slug
+    
+    def getContinent(self):
+        return self.continent
 
     class Meta:
         verbose_name_plural = 'Countries'
@@ -48,10 +56,17 @@ class City(models.Model):
     views = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
     slug = models.SlugField(unique=True)
+    reviewNum = 0
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(City, self).save(*args, **kwargs)
+    
+    def getCountrySlug(self):
+        return self.country.slug
+    
+    def getCountry(self):
+        return self.country
 
     class Meta:
         verbose_name_plural = 'Cities'

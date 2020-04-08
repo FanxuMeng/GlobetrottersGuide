@@ -17,7 +17,7 @@
                 {% if continents %}
                     {% for continent in continents %}
                     <li class="list-group-item">
-                        <a href="{% url 'GlobetrottersGuide:continent' continent.slug %}">{{ continent.name }}<span style="float:right">Visits: {{ continent.views }}</span>
+                        <a href="{% url 'GlobetrottersGuide:continent' continent.slug %}">{{ continent.name }}<span style="float:right">Reviews: {{ continent.reviewNum }}</span>
                         </a>
                     </li>
                     {% endfor %}

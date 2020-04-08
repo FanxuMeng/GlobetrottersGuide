@@ -24,7 +24,7 @@
         {% if cities %}
             {% for city in cities %}
             <li class="list-group-item">
-                <a href="{% url 'GlobetrottersGuide:city' continent.slug country.slug city.slug %}">{{ city.name }}<span style="float:right">Visits: {{ city.views }}</span>
+                <a href="{% url 'GlobetrottersGuide:city' continent.slug country.slug city.slug %}">{{ city.name }}<span style="float:right">Reviews: {{ city.reviewNum }}</span>
                 </a>
             </li>
             {% endfor %}

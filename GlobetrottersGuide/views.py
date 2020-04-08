@@ -37,6 +37,10 @@ def home(request):
         context_dict['continents'] = continent_list
         context_dict['country_reviews'] = country_review_list
         context_dict['city_reviews'] = city_review_list
+
+        for continent in continent_list:
+            continent.reviewNum = getContinentReviewNum(continent.slug)
+        
     except Continent.DoesNotExist:
         context_dict['continents'] = None
         context_dict['country_reviews'] = None
@@ -58,6 +62,10 @@ def home_continent(request,continent_name_slug):
     except Country.DoesNotExist:
         context_dict['countries'] = None
         context_dict['reviews'] = None
+    
+    for country in country_list:
+            country.reviewNum = getCountryReviewNum(country.slug)
+
     return render(request, 'GlobetrottersGuide/home_continent.html', context=context_dict)
 
 
@@ -75,6 +83,10 @@ def home_country(request, continent_name_slug, country_name_slug):
     except City.DoesNotExist:
         context_dict['cities'] = None
         context_dict['reviews'] = None
+
+    for city in city_list:
+            city.reviewNum = getCityReviewNum(city.slug)
+
     return render(request, 'GlobetrottersGuide/home_country.html', context=context_dict)
 
 
@@ -94,6 +106,33 @@ def home_city(request, continent_name_slug, country_name_slug, city_name_slug):
         context_dict['city'] = None
 
     return render(request, 'GlobetrottersGuide/home_city.html', context=context_dict)
+
+def getContinentReviewNum(continent_slug):
+    count = 0
+    for review in cityReview.objects.all():
+        if review.belong_city.getCountry().getContinentSlug() == continent_slug:
+            count+=1
+    for review in countryReview.objects.all():
+        if review.belong_country.getContinentSlug() == continent_slug:
+            count+=1
+    return count       
+
+def getCountryReviewNum(country_slug):
+    count = 0
+    for review in cityReview.objects.all():
+        if review.belong_city.getCountrySlug() == country_slug:
+            count+=1
+    for review in countryReview.objects.all():
+        if review.belong_country.slug == country_slug:
+            count+=1
+    return count     
+
+def getCityReviewNum(city_slug):
+    count = 0
+    for review in cityReview.objects.all():
+        if review.belong_city.slug == city_slug:
+            count+=1
+    return count      
 
 
 @login_required(login_url='accounts/login')

@@ -14,7 +14,7 @@
             {% for country in countries %}
             <li class="list-group-item">
                 <a href="{% url 'GlobetrottersGuide:country' continent.slug country.slug %}">{{ country.name }}
-                    <span style="float:right">Visits: {{ country.views }}</span>
+                    <span style="float:right">Reviews: {{ country.reviewNum }}</span>
                 </a>
             </li>
             {% endfor %}
