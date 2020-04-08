@@ -2,37 +2,40 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from GlobetrottersGuide.models import UserProfile,Continent,Country,City,countryReview,cityReview
 from GlobetrottersGuide.forms import UserForm
+from django.db import IntegrityError
 from datetime import datetime
+import random
+import string
 
-def makeCityReview(user,belong_city,title,rating,text,timeSpent,publishDate=datetime.now()):
+def makeCountryReview(user,rating=0,text="",timeSpent=0,publishDate=datetime.now(),belongCountry,):
 
-    cityReview = cityReview.objects.get_or_create()[0]
-    cityReview.username = user
-    cityReview.belong_city = belong_city
-    cityReview.rating = rating
-    cityReview.text = text
-    cityReview.time_spent = timeSpent
-    cityReview.publishDate = publishDate
+    CountryReview = countryReview.objects.get_or_create()[0]
+    CountryReview.username = user
+    CountryReview.belong_country = belongCountry
+    CountryReview.rating = rating
+    CountryReview.text = text
+    CountryReview.timeSpent = timeSpent
+    CountryReview.publishDate = publishDate
 
-    cityReview.save()
+    CountryReview.save()
     
-    return cityReview
+    return CountryReview
 
-def makeCountryReview(user,belongCountry,rating,text,timeSpent,publishDate=datetime.now()):
+def makeCityReview(user,title,rating,text,timeSpent,publishDate=datetime.now()):
 
-    countryReview = countryReview.objects.get_or_create()[0]
-    countryReview.username = user
-    countryReview.belong_country = belongCountry
-    countryReview.rating = rating
-    countryReview.text = text
-    countryReview.timeSpent = timeSpent
-    countryReview.publishDate = publishDate
+    CityReview = cityReview.objects.get_or_create()[0]
+    CityReview.username = user
+    CityReview.belong_city = belong_city
+    CityReview.rating = rating
+    CityReview.text = text
+    CityReview.time_spent = timeSpent
+    CityReview.publishDate = publishDate
 
-    countryReview.save()
+    CityReview.save()
     
-    return countryReview
+    return CityReview
 
-def makeUser(user,nationality,review_count,picture):
+def makeUser(user,review_count,picture,nationality):
     user = UserProfile.objects.get_or_create(user=user)[0]
     user.picture = picture
     user.nationality = nationality
@@ -42,246 +45,142 @@ def makeUser(user,nationality,review_count,picture):
 
     return user
 
-def makeContinent(name,likes):
+def makeContinent(name,likes=0):
     continent = Continent.objects.get_or_create(name=name)[0]
     continent.likes = likes
-    continent.Continent_id = 1
     continent.save()
     
     return continent
 
-def makeCountry(name,continent,likes,views,review_count):
+def makeCountry(name,continent=1,likes=0,views=0,review_count=0,continent_id = 1):
     country = Country.objects.get_or_create(name=name)[0]
     country.likes = likes
     country.views = views
     country.review_count = review_count
     country.continent = continent
+    country.Continent_id = continent_id
     
     country.save()
     
     return country
 
-def makeCity(name,country,likes,views,review_count):
+def makeCity(name,country=1,likes=0,views=0,review_count=0):
     city = City.objects.get_or_create(name=name)[0]
     city.likes = likes
     city.views = views
     city.review_count = review_count
-    city.Continent = continent
+    city.country = country
     
     city.save()
     
     return country
 
-class testingUserDBModel(TestCase):
-     
-    ### checking if the fields exist
-    ### most tests dont get to as Continent_id is missing (even though it doesnt exist)
-        
-    def testUsernameFieldExists(self):
-        newobjUser = User.objects.create(username = 'useruser',password = 'password',first_name = 'David',last_name ='Hasselhoff',email='example@test.com')
-        
-        newContinent = makeContinent('Europe',32)
-        newCountry = makeCountry('Denmark',newContinent,69,1337,57)
-        
-        newUser = makeUser(newobjUser,newCountry,12,'https://thumbs.dreamstime.com/b/smiling-old-man-having-coffee-portrait-looking-happy-33471677.jpg')
-        
-        userfield = newUser._meta.get_field('user').verbose_name
-        self.assertEquals(userfield,'user')
 
-    def testPictureFieldExists(self):
-        newobjUser = User.objects.create(username = 'useruser',password = 'password',first_name = 'David',last_name ='Hasselhoff',email='example@test.com')
-        
-        newContinent = makeContinent('Europe',32)
-        newCountry = makeCountry('Denmark',newContinent,69,1337,57)
-        
-        newUser = makeUser(newobjUser,newCountry,12,'https://thumbs.dreamstime.com/b/smiling-old-man-having-coffee-portrait-looking-happy-33471677.jpg')
-        
-        userfield = newUser._meta.get_field('picture').verbose_name
-        self.assertEquals(userfield,'picture')
-        
-    def testNationalityFieldExists(self):
-        newobjUser = User.objects.create(username = 'useruser',password = 'password',first_name = 'David',last_name ='Hasselhoff',email='example@test.com')
-        
-        newContinent = makeContinent('Europe',32)
-        newCountry = makeCountry('Denmark',newContinent,69,1337,57)
-        
-        newUser = makeUser(newobjUser,newCountry,12,'https://thumbs.dreamstime.com/b/smiling-old-man-having-coffee-portrait-looking-happy-33471677.jpg')
-        
-        userfield = newUser._meta.get_field('nationality').verbose_name
-        self.assertEquals(userfield,'nationality')
-        
-    def testReviewCountFieldExists(self):
-        newobjUser = User.objects.create(username = 'useruser',password = 'password',first_name = 'David',last_name ='Hasselhoff',email='example@test.com')
-        
-        newContinent = makeContinent('Europe',32)
-        newCountry = makeCountry('Denmark',newContinent,69,1337,57)
-        
-        newUser = makeUser(newobjUser,newCountry,12,'https://thumbs.dreamstime.com/b/smiling-old-man-having-coffee-portrait-looking-happy-33471677.jpg')
-        
-        userfield = newUser._meta.get_field('review_count').verbose_name
-        self.assertEquals(userfield,'review count')
-        
-    def testLikedReviewCountryFieldExists(self):
-        newobjUser = User.objects.create(username = 'useruser',password = 'password',first_name = 'David',last_name ='Hasselhoff',email='example@test.com')
-        
-        newContinent = makeContinent('Europe',32)
-        newCountry = makeCountry('Denmark',newContinent,69,1337,57)
-        
-        newUser = makeUser(newobjUser,newCountry,12,'https://thumbs.dreamstime.com/b/smiling-old-man-having-coffee-portrait-looking-happy-33471677.jpg')
-        
-        userfield = newUser._meta.get_field('liked_review_country').verbose_name
-        self.assertEquals(userfield,'liked review country')
-        
-    def testLikedReviewCityFieldExists(self):
-        newobjUser = User.objects.create(username = 'useruser',password = 'password',first_name = 'David',last_name ='Hasselhoff',email='example@test.com')
-        
-        newContinent = makeContinent('Europe',32)
-        newCountry = makeCountry('Denmark',newContinent,69,1337,57)
-        
-        newUser = makeUser(newobjUser,newCountry,12,'https://thumbs.dreamstime.com/b/smiling-old-man-having-coffee-portrait-looking-happy-33471677.jpg')
-        
-        userfield = newUser._meta.get_field('liked_review_city').verbose_name
-        self.assertEquals(userfield,'liked review city')
-
-    ###checking if fields are created properly
-    def testFieldsExist(self):
-        fields = list(User._meta.get_fields())
-        self.assertNotEquals(fields,None)
-
-
-class testingContinentDBModel(TestCase):
-    ###checking if fields are created properly
-    def testFieldsExist(self):
-        newContinent = makeContinent('Europe',32)
-        fields = list(newContinent._meta.get_fields())
-        self.assertNotEquals(fields,None)
+def makeLongString():
+    rnd = ''.join([random.choice(string.ascii_letters)for i in range(129)])
+    return rnd
     
-    ### checking if fields exist through the data
-    def testNameExists(self):
-        newContinent = makeContinent('Europe',32)
-        field = newContinent._meta.get_field('name').verbose_name
-    
+
+class testingContinentModel(TestCase):
+
+    def testContinentName(self):
+        newContinent = makeContinent('Europe')
+        NC = Continent.objects.get(name='Europe')
+        field = NC._meta.get_field('name').verbose_name
         self.assertEquals(field,'name')
         
-    def testLikesExists(self):
-        newContinent = makeContinent('Europe',32)
-        field = newContinent._meta.get_field('likes').verbose_name
+    def fieldsExist(self):
         
-        self.assertEquals(field,'likes')
+        aContinent = Continent.objects.get_fields()
+        self.assertNotEquals(list(aContinent),None)
         
-    ###checking field specifics  
-    def testNameLength(self):
-        newContinent = makeContinent('Europe',32)
-        field = Continent._meta.get_field('name').max_length
+    def ifContinentHasLongerName(self):
+        newContinent = makeContinent(makeLongString())
+        self.assertRaises(Exception,newContinent)
         
-        self.assertEquals(field,128)
+    def testSlug(self):
+        newContinent = makeContinent('this is a random string')
+        newcontinent.save()
 
-class testingCountryDBModel(TestCase):
-    
-    ###checking if fields exist from data creation
-    ### most tests dont get to assert, due to Continent_id (which doesnt exist)
-    
-    def testNameExists(self):
-        newContinent = makeContinent('Europe',32)
-        newCountry = makeCountry('Denmark',newContinent,69,1337,57)
-        field = newcountry._meta.get_field('name').verbose_name
+        self.assertEqual(newContinent.slug,'this-is-a-random-string')
         
-        self.assertEquals(field,'name')
-        
-    def testViewsExists(self):
-        newContinent = makeContinent('Europe',32)
-        newCountry = makeCountry('Denmark',newContinent,69,1337,57)
-        field = Country._meta.get_field('views').verbose_name
-        
-        self.assertEquals(field,'views')
-    def testLikesExists(self):
-        newContinent = makeContinent('Europe',32)
-        newCountry = makeCountry('Denmark',newContinent,69,1337,57)
-        field = Country._meta.get_field('likes').verbose_name
-        
-        self.assertEquals(field,'likes')
-    def testReviewCountExists(self):
-        newContinent = makeContinent('Europe',32)
-        newCountry = makeCountry('Denmark',newContinent,69,1337,57)
-        field = Country._meta.get_field('review_count').verbose_name
-        
-        self.assertEquals(field,'review count')
-    
-    def testContinentExists(self):
-        newContinent = makeContinent('Europe',32)
-        newCountry = makeCountry('Denmark',newContinent,69,1337,57)
-        field = Country._meta.get_field('Continent').verbose_name
-        
-        self.assertEquals(field,'Continent')
-
-    ### checking field attributes
-    def testNameLength(self):
-        field = Country._meta.get_field('name').max_length
-        self.assertEquals(field,128)
-    def testFieldsExist(self):
-        newContinent = makeContinent('Europe',32)
-        newCountry = makeCountry('Denmark',newContinent,69,1337,57)
-        fields = list(newCountry._meta.get_fields())
-        self.assertNotEquals(fields,None)
-        
-
-
-class testingCityDBModel(TestCase):
-    ###checking if fields exist from data creation
-    ### most tests dont get to assert, due to Continent_id (which doesnt exist)
-
-    def testNameExists(self):
-        newContinent = makeContinent('Europe',32)
-        newCountry = makeCountry('Denmark',newContinent,69,1337,57)
-        newCity = makeCity('Copenhagen',newCountry,50,50,25)
-        
-        field = newCity._meta.get_field('name').verbose_name
-        self.assertEquals(field,'name')
-    def testViewsExists(self):
-        newContinent = makeContinent('Europe',32)
-        newCountry = makeCountry('Denmark',newContinent,69,1337,57)
-        newCity = makeCity('Copenhagen',newCountry,50,50,25)
-        
-        field = newCity._meta.get_field('views').verbose_name
-        self.assertEquals(field,'views')
-    def testLikesExists(self):
-        newContinent = makeContinent('Europe',32)
-        newCountry = makeCountry('Denmark',newContinent,69,1337,57)
-        newCity = makeCity('Copenhagen',newCountry,50,50,25)
-        
-        field = newCity._meta.get_field('likes').verbose_name
-        self.assertEquals(field,'likes')
-    def testReviewCountExists(self):
-        newContinent = makeContinent('Europe',32)
-        newCountry = makeCountry('Denmark',newContinent,69,1337,57)
-        newCity = makeCity('Copenhagen',newCountry,50,50,25)
-        
-        field = newCity._meta.get_field('review_count').verbose_name
-        self.assertEquals(field,'review count')
-
-    ### checking field attributes
-    def testNameLength(self):
-        field = City._meta.get_field('name').max_length
-        self.assertEquals(field,128)
-    def testFieldsExist(self):
-        newContinent = makeContinent('Europe',32)
-        newCountry = makeCountry('Denmark',newContinent,69,1337,57)
-        newCity = makeCity('Copenhagen',newCountry,50,50,25)
-        
-        fields = list(newCity._meta.get_fields())
-        self.assertNotEquals(fields,None)
+    def likesAreNotNegative(self):
+        newContinent = makeContinent('Europe',-3124)
+        self.assertEqual((newContinent.likes >= 0),True)
     
         
+class testingCountryModel(TestCase):
+    
+    def fieldsExist(self):
+        aCountry = Country.objects.get_fields()
+        self.assertNotEquals(list(aCountry),None)
         
+    def ifCountryHasLongerName(self):
+        newCountry = makeCountry(makeLongString())
+        self.assertRaises(Exception,newCountry)
         
+    def testSlug(self):
+        newCountry = makeCountry('oh look another string')
+        newCountry.save()
 
-
-    
-
-
-    
-
-    
-    
-    
+        self.assertEqual(newCountry,'oh-look-another-random-string')
         
+    def viewsNotNegative(self):
+        newCountry = makeCountry('Belgium',views = -548)
+        self.assertEqual((newCountry.views >= 0), True)
+        
+    def likesNotNegative(self):
+        newCountry = makeCountry('Belgium',likes = -10)
+        self.assertEqual((newCountry.likes >= 0), True)
+        
+    def continentIsNotNone(self):
+        newCountry = makeCountry('Belgium',continent = None)
+        self.assertRaises(IntegrityError,newCountry)
+        
+    def reviewCountNotNegative(self):
+        newCountry = makeCountry('Belgium',review_count = -35135)
+        self.assertEqual((newCountry.review_count >= 0),True)
+        
+class testingCityModel(TestCase):
+
+    def fieldsExist(self):
+        aCity = City.objects.get_fields()
+        self.assertNotEquals(list(aCity),None)
+        
+    def ifCountryHasLongerName(self):
+        newCountry = makeCity(makeLongString())
+        self.assertRaises(Exception,newCountry)
+        
+    def testSlug(self):
+        newCountry = makeCity('AND ANOTHER ONE')
+        newCountry.save()
+
+        self.assertEqual(newCountry,'AND-ANOTHER-ONE')
+        
+    def viewsNotNegative(self):
+        newCity = makeCountry('Brussels',views = -233)
+        self.assertEqual((newCity.views >= 0), True)
+        
+    def likesNotNegative(self):
+        newCity = makeCity('Brussels',likes = -3)
+        self.assertEqual((newCity.likes >= 0), True)
+        
+    def countryIsNotNone(self):
+        newCity = makeCity('Brussels',country = None)
+        self.assertRaises(IntegrityError,newCity)
+        
+    def reviewCountNotNegative(self):
+        newCity = makeCity('Brussels',review_count = -35135)
+        self.assertEqual((newCity.review_count >= 0),True)
+    
+
+class testingUserModel(TestCase):
+        
+    def positiveReviewCount(self):
+        userinstance = makeUser('StewartC',review_count = -1)
+        self.assertEqual((userinstance.review_count>=0),True)
+        
+    def slugTest(self):
+        userinstance = makeUser('travelling tourist 73')
+        self.assertEqual(userinstance.slug,'travelling-tourist-73')
+                
