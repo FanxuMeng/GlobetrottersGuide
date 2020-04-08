@@ -10,7 +10,7 @@
         </div>
         {% if user.is_authenticated %}
         <div class="col">
-            <a role="button" class="btn btn-primary" href="" style="float:right">Edit Profile</a>
+            <a role="button" class="btn btn-primary" href="{% url 'GlobetrottersGuide:EditProfile' user.username %}" style="float:right">Edit Profile</a>
         </div>
         {% endif %}
     </div>
@@ -22,16 +22,83 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <span class="border border-primary">
-                    <img class="rounded" src="{{ user.UserProfile.picture.url }}" alt="No Image">
-                </span>
+                    <img class="rounded" src="{{ userProfile.picture.url }}" alt="No Image" style="width:300px;height:300px;margin:20px">
             </div>
             <div class="col">
                 <p><h3>User Name: {{ user.username }}</h3></p>
-                <p>{{ user__UserProfile_nationality__name }}</p>
+                <p><h3>Email: {{ user.email }}</h3></p>
+                <div><h3>Nationality: {{ userProfile.nationality.name }}
+                {% with 'flags/'|add:userProfile.nationality.slug|add:'.png' as img %}
+                <span><img class="rounded-circle" src="{% static img %}" style="width:50px;height:50px;" alt=""/></span>
+                {% endwith %}
+                </h3>
+                </div>
             </div>
         </div>
     </div>
+
+    <div class="row" style="width:100%;">
+    <h1>Country Reviews published by {{ user.username }}</h1>
+    </div>
+    {% if country_reviews or city_reviews %}
+    {% for review in country_reviews %}
+        <div class="card" style="width: 18rem;margin:10px;float:left;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <h5>{{ review.belong_country.name }}</h5>
+                </li>
+            </ul>
+            {% if review.image %}
+            <img src="{{ review.image.url }}" class="card-img-top" alt="No Image">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ review.title }}</h5>
+                <p class="card-text">{{ review.text }}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    Rating: {{ review.rating }}/5
+                </li>
+                <li class="list-group-item">{{ review.views }} views</li>
+                <li class="list-group-item">{{ review.publish_date | date:"F d Y" }} &emsp; Spent: {{ review.timeSpent.days }} day(s)</li>
+            </ul>
+        </div>
+    {% endfor %}
+    {% else %}
+    <p style="float:left;margin:10px"><h2>No country review.</h2></p>
+    {% endif %}
+
+
+    <div class="row" style="width:100%;">
+    <h1>City Reviews published by {{ user.username }}</h1>
+    </div>
+    {% if city_reviews %}
+        {% for review in city_reviews %}
+        <div class="card" style="width: 18rem;margin:10px;float:left;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <h5>{{ review.belong_city.name }}</h5>
+                </li>
+            </ul>
+            {% if review.image %}
+            <img src="{{ review.image.url }}" class="card-img-top" alt="No Image">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ review.title }}</h5>
+                <p class="card-text">{{ review.text }}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    Rating: {{ review.rating }}/5
+                </li>
+                <li class="list-group-item">{{ review.views }} views &emsp; </li>
+                <li class="list-group-item">{{ review.publish_date | date:"F d Y" }} &emsp; Spent: {{ review.timeSpent.days }} day(s)</li>
+            </ul>
+        </div>
+    {% endfor %}
+    {% else %}
+        <p style="float:left;margin:10px"><h2>No city review.</h2></p>
+    {% endif %}
 
 
 {% endblock %}

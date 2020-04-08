@@ -13,7 +13,7 @@
         </h1>
         </div>
         <div class="col">
-            <a role="button" class="btn btn-primary" href="" style="float:right">Write a Review</a>
+            <a role="button" class="btn btn-primary" href="{% url 'GlobetrottersGuide:ReviewCountry' continent_name_slug=continent.slug country_name_slug=country.slug %}" style="float:right">Write a Review</a>
         </div>
     </div>
 {% endblock %}
@@ -49,12 +49,9 @@
                     <a href="{% url 'GlobetrottersGuide:UserProfile' review.user.username %}">{{ review.user.username }}</a>
                     &emsp; Rating: {{ review.rating }}/5
                 </li>
-                <li class="list-group-item">{{ review.likes }} likes &emsp; {{ review.views }} views</li>
+                <li class="list-group-item">{{ review.views }} views</li>
                 <li class="list-group-item">{{ review.publish_date | date:"F d Y" }} &emsp; Spent: {{ review.timeSpent.days }} day(s)</li>
             </ul>
-            <div class="card-body">
-                <a href="#" class="card-link">View Detail</a>
-            </div>
         </div>
     {% endfor %}
     {% else %}

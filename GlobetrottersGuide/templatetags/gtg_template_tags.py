@@ -20,3 +20,4 @@ def get_city_list(current_city=None):
 def get_country_list(current_country=None):
     return {'country':Country.objects.all(),
             'current_country':current_country}
+

@@ -12,19 +12,18 @@ class UserForm(forms.ModelForm):
         fields = ('username', 'password')
 
 
-class UserProfileForm(forms.ModelForm):
+class CreateProfileForm(forms.ModelForm):
     class Mata:
         model = UserProfile
         fields = ('picture', 'nationality')
 
 
 class EditProfileForm(forms.ModelForm):
-    username = forms.CharField(label='username')
-    nationality = forms.CharField(label='nationality')
-
+    email = forms.EmailField()
+    picture = forms.ImageField()
     class Meta:
         model = UserProfile
-        fields = ('username', 'nationality')
+        fields = ('email', 'picture', 'nationality')
 
 
 class countryReviewForm(forms.ModelForm):

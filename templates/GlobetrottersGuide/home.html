@@ -78,12 +78,9 @@
                     <a href="{% url 'GlobetrottersGuide:UserProfile' review.user.username %}">{{ review.user.username }}</a>
                     &emsp; Rating: {{ review.rating }}/5
                 </li>
-                <li class="list-group-item">{{ review.likes }} likes &emsp; {{ review.views }} views</li>
+                <li class="list-group-item">{{ review.views }} views</li>
                 <li class="list-group-item">{{ review.publish_date | date:"F d Y" }} &emsp; Spent: {{ review.timeSpent.days }} day(s)</li>
             </ul>
-            <div class="card-body">
-                <a href="#" class="card-link">View Detail</a>
-            </div>
         </div>
     {% endfor %}
     {% else %}
@@ -115,12 +112,9 @@
                     <a href="{% url 'GlobetrottersGuide:UserProfile' review.user.username %}">{{ review.user.username }}</a>
                     &emsp; Rating: {{ review.rating }}/5
                 </li>
-                <li class="list-group-item">{{ review.likes }} likes &emsp; {{ review.views }} views &emsp; </li>
+                <li class="list-group-item">{{ review.views }} views &emsp; </li>
                 <li class="list-group-item">{{ review.publish_date | date:"F d Y" }} &emsp; Spent: {{ review.timeSpent.days }} day(s)</li>
             </ul>
-            <div class="card-body">
-                <a href="#" class="card-link">View Detail</a>
-            </div>
         </div>
     {% endfor %}
     {% else %}

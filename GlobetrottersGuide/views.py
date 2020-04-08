@@ -16,6 +16,18 @@ from GlobetrottersGuide.models import Country
 from GlobetrottersGuide.models import City
 
 
+@login_required(login_url='accounts/login')
+def pass_userProfile(request, username):
+    user = User.objects.get(username=username)
+    context_dict = {}
+    try:
+        userProfile = UserProfile.objects.get(user=user)
+        context_dict['userProfile'] = userProfile
+    except UserProfile.DoesNotExist:
+        context_dict['userProfile'] = None
+    return render(request, 'GlobetrottersGuide/base.html', context=context_dict)
+
+
 def home(request):
     context_dict = {}
     try:
@@ -27,8 +39,8 @@ def home(request):
         context_dict['city_reviews'] = city_review_list
     except Continent.DoesNotExist:
         context_dict['continents'] = None
-        context_dict['countryReviews'] = None
-        context_dict['cityReviews'] = None
+        context_dict['country_reviews'] = None
+        context_dict['city_reviews'] = None
     return render(request, 'GlobetrottersGuide/home.html', context=context_dict)
 
 
@@ -139,7 +151,7 @@ def add_cityReview(request, continent_name_slug, country_name_slug, city_name_sl
         return redirect('GlobetrottersGuide:HomePage')
 
     form_class = cityReviewForm
-    form = form_class(request.POST or None)
+    form = form_class(request.POST)
 
     if request.method == 'POST':
 
@@ -163,15 +175,6 @@ def add_cityReview(request, continent_name_slug, country_name_slug, city_name_sl
     return render(request,'GlobetrottersGuide/add_cityReview.html', context=context_dict)
 
 
-def countryReview_detail(request, countryReview_id):
-    review = countryReview.objects.get(countryReview_id=countryReview_id)
-    return render(request, 'GlobetrottersGuide/countryReview_detail.html', review)
-
-def cityReview_detail(request, cityReview_id):
-    review = cityReview.objects.get(cityReview_id=cityReview_id)
-    return render(request, 'GlobetrottersGuide/cityReview_detail.html', review)
-
-
 def about(request):
     context_dict = {}
     context_dict['organization'] = "University of Glasgow"
@@ -185,22 +188,23 @@ def showUserProfile(request, username):
     user = User.objects.get(username=username)
     context_dict['user'] = user
     try:
-        userProfile = UserProfile.objects.get(user__username=username)
+        userProfile = UserProfile.objects.get(user=user)
         context_dict['userProfile'] = userProfile
     except UserProfile.DoesNotExist:
-        context_dict['userProfile'] = None
+        return redirect(reverse('GlobetrottersGuide:EditProfile',
+                                kwargs={'username': user.username}))
 
     try:
-        countryReview_list = countryReview.objects.filter(user__username=username)
-        context_dict['countryReview'] = countryReview_list
+        countryReview_list = countryReview.objects.filter(user=user)
+        context_dict['country_reviews'] = countryReview_list
     except countryReview.DoesNotExist:
-        context_dict['countryReview'] = None
+        context_dict['country_reviews'] = None
 
     try:
-        cityReview_list = cityReview.objects.filter(user__username=username)
-        context_dict['cityReview'] = cityReview_list
+        cityReview_list = cityReview.objects.filter(user=user)
+        context_dict['city_reviews'] = cityReview_list
     except cityReview.DoesNotExist:
-        context_dict['cityReview'] = None
+        context_dict['city_reviews'] = None
 
     return render(request, 'GlobetrottersGuide/UserProfile.html', context=context_dict)
 
@@ -208,14 +212,18 @@ def showUserProfile(request, username):
 @login_required(login_url='accounts/login')
 def editProfile(request, username):
     user = User.objects.get(username=username)
-    form = EditProfileForm(request.POST or None, initial={'username': user.username, 'nationality': user.nationality})
+    form = EditProfileForm(request.POST)
     if request.method == 'POST':
         if form.is_valid():
-            user.nationality = request.POST['nationality']
-            user.username = request.POST['username']
+            userProfile = UserProfile()
+            user.Email = request.POST['email']
+            userProfile.picture = request.POST['picture']
+            userProfile.nationality = request.POST['nationality']
 
+            userProfile.save()
             user.save()
 
             return HttpResponseRedirect('%s' % (reverse('profile')))
 
     return render(request, 'GlobetrottersGuide/editProfile.html', {"form": form})
+

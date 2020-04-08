@@ -7,6 +7,7 @@ app_name = 'GlobetrottersGuide'
 
 urlpatterns = [
     path('',views.home, name='HomePage'),
+
     path('about/',views.about, name='about'),
 
     path('user/<username>/',
@@ -16,10 +17,8 @@ urlpatterns = [
 
     path('<slug:continent_name_slug>/',
          views.home_continent, name='continent'),
-
     path('<slug:continent_name_slug>/<slug:country_name_slug>/',
          views.home_country, name='country'),
-
     path('<slug:continent_name_slug>/<slug:country_name_slug>/<slug:city_name_slug>/',
          views.home_city, name='city'),
 
@@ -27,8 +26,4 @@ urlpatterns = [
          views.add_countryReview, name='ReviewCountry'),
     path('<slug:continent_name_slug>/<slug:country_name_slug>/<slug:city_name_slug>/writeCityReview/',
          views.add_cityReview, name='ReviewCity'),
-    path('<slug:continent_name_slug>/<slug:country_name_slug>/<slug:city_name_slug>/<int:cityReview_id>/',
-         views.cityReview_detail, name='review'),
-    path('<slug:continent_name_slug>/<slug:country_name_slug>/<int:countryReview_id>/',
-         views.countryReview_detail, name='review'),
 ]

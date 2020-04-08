@@ -2,53 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c38e4df1-fd9a-4cb6-843a-1e6e73f73f83" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/continent/africa-0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/continent/antarctica-0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/continent/asia-0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/continent/europe-0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/continent/north-america-0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/continent/oceania-0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/continent/south-america-0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/continent/worldmap-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/background-bwy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/base-style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/dashboard.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/about.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/cityReview_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GlobetrottersGuide/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlobetrottersGuide/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GlobetrottersGuide/templatetags/gtg_template_tags.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide/templatetags/gtg_template_tags.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GlobetrottersGuide/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GlobetrottersGuide/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlobetrottersGuide_project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide_project/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GlobetrottersGuide_project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/GlobetrottersGuide_project/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/populate_gtg.py" beforeDir="false" afterPath="$PROJECT_DIR$/populate_gtg.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/continent/Africa.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/continent/Europe.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/continent/NA.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/continent/Oceania.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/continent/SA.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/continent/asia.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/continent/worldmap.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/flags/usa.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/flags/america.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/feather.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/jquery-3.3.1.slim.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/jquery-slim.min.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/GlobetrottersGuide/UserProfile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/UserProfile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/GlobetrottersGuide/add_cityReview.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/add_cityReview.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/GlobetrottersGuide/add_countryReview.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/add_countryReview.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/GlobetrottersGuide/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/GlobetrottersGuide/cityReview_detail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/GlobetrottersGuide/countryReview_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/createProfile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/GlobetrottersGuide/editProfile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/editProfile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/GlobetrottersGuide/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/GlobetrottersGuide/home_city.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/home_city.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/GlobetrottersGuide/home_continent.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/home_continent.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/GlobetrottersGuide/home_country.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/home_country.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/GlobetrottersGuide/review_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/GlobetrottersGuide/countryReview_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/logout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/logout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/registration_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/registration_form.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +122,7 @@
       <workItem from="1586138491910" duration="8757000" />
       <workItem from="1586191894030" duration="25266000" />
       <workItem from="1586279621363" duration="1857000" />
-      <workItem from="1586281745163" duration="35548000" />
+      <workItem from="1586281745163" duration="45743000" />
     </task>
     <servers />
   </component>
@@ -180,34 +148,34 @@
     </state>
     <state x="747" y="240" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1584117180893" />
     <state x="561" y="339" key="FileChooserDialogImpl/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1585841853243" />
-    <state width="1657" height="176" key="GridCell.Tab.0.bottom" timestamp="1586332978157">
+    <state width="1624" height="228" key="GridCell.Tab.0.bottom" timestamp="1586350808613">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1195" height="175" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1586251417875" />
     <state width="1270" height="148" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1586279366444" />
     <state width="1564" height="243" key="GridCell.Tab.0.bottom/0.1080.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586033855942" />
-    <state width="1657" height="176" key="GridCell.Tab.0.bottom/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586332978157" />
-    <state width="1657" height="176" key="GridCell.Tab.0.center" timestamp="1586332978157">
+    <state width="1624" height="228" key="GridCell.Tab.0.bottom/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586350808613" />
+    <state width="1624" height="228" key="GridCell.Tab.0.center" timestamp="1586350808612">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1195" height="175" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1586251417875" />
     <state width="1270" height="148" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1586279366444" />
     <state width="1564" height="243" key="GridCell.Tab.0.center/0.1080.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586033855942" />
-    <state width="1657" height="176" key="GridCell.Tab.0.center/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586332978157" />
-    <state width="1657" height="176" key="GridCell.Tab.0.left" timestamp="1586332978157">
+    <state width="1624" height="228" key="GridCell.Tab.0.center/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586350808612" />
+    <state width="1624" height="228" key="GridCell.Tab.0.left" timestamp="1586350808612">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1195" height="175" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1586251417875" />
     <state width="1270" height="148" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1586279366444" />
     <state width="1564" height="243" key="GridCell.Tab.0.left/0.1080.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586033855942" />
-    <state width="1657" height="176" key="GridCell.Tab.0.left/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586332978157" />
-    <state width="1657" height="176" key="GridCell.Tab.0.right" timestamp="1586332978157">
+    <state width="1624" height="228" key="GridCell.Tab.0.left/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586350808612" />
+    <state width="1624" height="228" key="GridCell.Tab.0.right" timestamp="1586350808612">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1195" height="175" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1586251417875" />
     <state width="1270" height="148" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1586279366444" />
     <state width="1564" height="243" key="GridCell.Tab.0.right/0.1080.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586033855942" />
-    <state width="1657" height="176" key="GridCell.Tab.0.right/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586332978157" />
+    <state width="1624" height="228" key="GridCell.Tab.0.right/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586350808612" />
     <state width="1479" height="167" key="GridCell.Tab.1.bottom" timestamp="1585922637471">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -236,46 +204,50 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="529" y="276" width="485" height="282" key="com.intellij.ide.util.TipDialog/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586167722522" />
-    <state x="512" y="140" width="1189" height="880" key="dock-window-1" timestamp="1586332760925">
+    <state x="334" y="159" width="1460" height="880" key="dock-window-1" timestamp="1586351711178">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="762" y="0" width="781" height="840" key="dock-window-1/0.0.1536.834@0.0.1536.834" timestamp="1583936648251" />
     <state x="332" y="1080" width="958" height="927" key="dock-window-1/0.1080.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586000977873" />
-    <state x="512" y="140" width="1189" height="880" key="dock-window-1/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586332760925" />
+    <state x="334" y="159" width="1460" height="880" key="dock-window-1/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586351711178" />
     <state x="506" y="123" width="1189" height="880" key="dock-window-1/1920.0.1536.840/0.0.1920.1050@1920.0.1536.840" timestamp="1586323950165" />
-    <state x="2126" y="150" width="974" height="880" key="dock-window-2" timestamp="1586334360798">
-      <screen x="1920" y="0" width="1536" height="840" />
+    <state x="737" y="172" width="974" height="880" key="dock-window-2" timestamp="1586351232121">
+      <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="1966" y="0" width="599" height="700" key="dock-window-2/0.0.1280.689@0.0.1280.689" timestamp="1586247627395" />
     <state x="817" y="0" width="719" height="840" key="dock-window-2/0.0.1536.834@0.0.1536.834" timestamp="1586248245034" />
     <state x="981" y="7" width="850" height="840" key="dock-window-2/0.0.1920.1050@0.0.1920.1050" timestamp="1586279623678" />
     <state x="762" y="1509" width="781" height="411" key="dock-window-2/0.1080.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586090265349" />
     <state x="2548" y="32" width="644" height="654" key="dock-window-2/1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1586214932358" />
-    <state x="2126" y="150" width="974" height="880" key="dock-window-2/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586334360798" />
-    <state x="516" y="44" width="1195" height="880" key="dock-window-3" timestamp="1586334332623">
+    <state x="737" y="172" width="974" height="880" key="dock-window-2/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586351232121" />
+    <state x="603" y="58" width="1160" height="965" key="dock-window-3" timestamp="1586349699808">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="381" y="0" width="906" height="696" key="dock-window-3/0.0.1280.689@0.0.1280.689" timestamp="1586247627395" />
     <state x="470" y="158" width="867" height="682" key="dock-window-3/0.0.1536.834@0.0.1536.834" timestamp="1586260990137" />
     <state x="716" y="2" width="741" height="880" key="dock-window-3/0.0.1920.1050@0.0.1920.1050" timestamp="1586323129868" />
     <state x="-6" y="1080" width="781" height="840" key="dock-window-3/0.1080.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586085207866" />
-    <state x="516" y="44" width="1195" height="880" key="dock-window-3/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586334332623" />
+    <state x="603" y="58" width="1160" height="965" key="dock-window-3/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586349699808" />
     <state x="1914" y="38" width="741" height="880" key="dock-window-3/1920.0.1536.840/0.0.1920.1050@1920.0.1536.840" timestamp="1586324584274" />
-    <state x="93" y="32" width="770" height="798" key="dock-window-4" timestamp="1586332484400">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="2032" y="158" width="920" height="798" key="dock-window-4" timestamp="1586350753967">
+      <screen x="1920" y="0" width="1536" height="840" />
     </state>
     <state x="1318" y="0" width="871" height="700" key="dock-window-4/0.0.1280.689@0.0.1280.689" timestamp="1586247627395" />
     <state x="630" y="101" width="848" height="677" key="dock-window-4/0.0.1536.834@0.0.1536.834" timestamp="1586260990137" />
     <state x="93" y="32" width="770" height="798" key="dock-window-4/0.0.1920.1050@0.0.1920.1050" timestamp="1586323129869" />
     <state x="762" y="1080" width="781" height="435" key="dock-window-4/0.1080.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586090265350" />
     <state x="1958" y="49" width="947" height="635" key="dock-window-4/1920.0.1280.700/0.0.1920.1050@0.0.1920.1050" timestamp="1586246049426" />
-    <state x="93" y="32" width="770" height="798" key="dock-window-4/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586332484400" />
+    <state x="2032" y="158" width="920" height="798" key="dock-window-4/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586350753967" />
+    <state x="535" y="144" width="861" height="873" key="find.popup" timestamp="1586346718488">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="535" y="144" width="861" height="873" key="find.popup/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1586346718488" />
     <state x="268" y="233" width="672" height="678" key="search.everywhere.popup" timestamp="1585855975551">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="268" y="233" width="672" height="678" key="search.everywhere.popup/1920.0.1536.840/0.0.1920.1050@0.0.1920.1050" timestamp="1585855975551" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/GlobetrottersGuide_project$manage.coverage" NAME="manage Coverage Results" MODIFIED="1586332426698" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/GlobetrottersGuide_project$manage.coverage" NAME="manage Coverage Results" MODIFIED="1586350808588" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

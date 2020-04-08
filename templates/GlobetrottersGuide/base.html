@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+{% load gtg_template_tags %}
 
 <html lang="en">
     <head>
@@ -37,11 +38,6 @@
                         </ul>
 
 
-                        <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
-                        </form>
-
 
                         {% if user.is_authenticated %}
                             <ul class="nav-item dropdown" style="margin:0;padding:0;">
@@ -54,24 +50,16 @@
                                     <a class="dropdown-item" href="{% url 'auth_logout' %}">Log Out</a>
                                 </div>
                             </ul>
-
-
-                        {% endif %}
-                    </div>
-
-                        {% if user.is_authenticated %}
-                            <a class="navbar-brand p-2" href="{% url 'GlobetrottersGuide:UserProfile' user.id %}">
-                            <img src="{{ user.UserProfile.picture.url }}" width="30" height="30" class="d-inline-block align-top" alt="">
+                            <a class="navbar-brand p-2" href="{% url 'GlobetrottersGuide:UserProfile' user.username %}">
+                            <img src="{{ userProfile.picture.url }}" width="30" height="30" class="d-inline-block align-top" alt="">
                             </a>
-
-                            <!--<a class="nav-link" href="{% url 'GlobetrottersGuide:UserProfile' request.user.id %}"><img class="rounded-circle" src="{{ request.user.UserProfile.picture.url }}" style="max-width:2.5rem" alt=""></a>-->
                         {% else %}
                             <div style="position:relative; right:50px">
                             <a class="btn btn-outline-success" href="{% url 'auth_login' %}" style="margin:10px 0px 10px 70px" >Login</a>
                             <a class="btn btn-outline-primary" href="{% url 'registration_register' %}" style="margin: 10px 20px 10px 0px;" >Sign up</a>
                             </div>
                         {% endif %}
-
+                    </div>
             </nav>
         </header>
 
