@@ -1,5 +1,5 @@
 django-registration-redux==2.2
-django==2.2.3
+django==2.2.22
 python==3.7.2
 bootstrap==4.2
 pillow==7.0.0
